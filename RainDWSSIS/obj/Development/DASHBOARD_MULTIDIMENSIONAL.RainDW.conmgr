@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=DASHBOARD\MULTIDIMENSIONAL;Initial Catalog=RainDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-RainDWSSIS-{9256B630-241E-4E66-B73C-7479BAF90213}DASHBOARD\MULTIDIMENSIONAL.RainDW;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=DASHBOARD\MULTIDIMENSIONAL;Initial Catalog=RainDW_Bakhshi;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-RainDWSSIS-{9256B630-241E-4E66-B73C-7479BAF90213}DASHBOARD\MULTIDIMENSIONAL.RainDW;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

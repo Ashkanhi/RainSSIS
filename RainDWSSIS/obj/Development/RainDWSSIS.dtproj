@@ -26,13 +26,11 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DASHBOARD</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAstMyxpEebESoo/br1eviDwAAAAACAAAAAAADZgAAwAAAABAAAADIxahsO9HTf5of93gko1sdAAAAAASAAACgAAAAEAAAAEGRX2guzrWNbuAJQdNm+yaIAAAAlRf98DLcVEmI+ZvOJPrfdPHjJ+BrorXupcbTCXxyi1mddQUb51q7yjllXU+F+zmm7MJQqDhKV4o4d1wqiS+9Z1m9i7BnoY5LgC+1nvEVbHTGg3OsGn4rLpIliANZx+nl9OZ2wTFLeNeISgdAWxJJSMWTJHnAjGWzIZHoDGHVFKKaYGJps/TlxxQAAAA0+viX90QafdleOttEDTAc6x67Ig==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAstMyxpEebESoo/br1eviDwAAAAACAAAAAAADZgAAwAAAABAAAABJkLenTcK8vhsK2aK6Fm/0AAAAAASAAACgAAAAEAAAABpoucHXxSihVjbcfuNQuGyIAAAASA33raxHCUYxnEHoCMg18+h51YotIdVlUaVD6GWafR/TuYps4r+Wcke/yVzLHSnRba8h8/Nj8hAdAzlEKBd/krdmgDQOrB6rXo7cRnQeJytYt7qfvZMSEqI3VRTng9lntiLW5p9bMgm7AWWnO4CyAmxq94D0kxkh5M7OutiGs0FRWS+NOPo8KRQAAABezGLOmCJgrk6+qnvGMYut0VuDdg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="FilllDimItem.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="FillDimBaseDimes.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ProcessTask.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DASHBOARD_MULTIDIMENSIONAL.RainDW.conmgr" />
@@ -65,7 +63,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=DASHBOARD\MULTIDIMENSIONAL;Initial Catalog=RainDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-RainDWSSIS-{9256B630-241E-4E66-B73C-7479BAF90213}DASHBOARD\MULTIDIMENSIONAL.RainDW;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=DASHBOARD\MULTIDIMENSIONAL;Initial Catalog=RainDW_Bakhshi;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-RainDWSSIS-{9256B630-241E-4E66-B73C-7479BAF90213}DASHBOARD\MULTIDIMENSIONAL.RainDW;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -125,7 +123,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">RainDW</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">RainDW_Bakhshi</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -189,33 +187,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="FilllDimItem.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{45572953-1C6A-457A-8449-21DE008E8E4D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">FilllDimItem</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7CFB0C72-F351-4675-877A-008B52142EBD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="FillDimBaseDimes.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{8CB3715C-41E1-4EAC-BA9A-15EA32F3A14B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">200</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">293</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2CF57C21-026E-4C6B-A2FF-17F68D68B949}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6837FCBA-EA89-4296-B27B-414A85EC44C8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -444,23 +425,6 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ProcessTask.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B501022C-7142-4985-B3E8-7B84AABBF67D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7D837574-D3C7-471E-8C68-F50BE9AA0ED4}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
