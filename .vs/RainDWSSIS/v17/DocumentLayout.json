@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\FillDimBaseDimes.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
       "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\FillDimBaseDimes.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Project.params||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Project.params||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Project.params [Design]",
+              "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Project.params",
+              "RelativeDocumentMoniker": "RainDWSSIS\\Project.params",
+              "ToolTip": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Project.params [Design]",
+              "RelativeToolTip": "RainDWSSIS\\Project.params [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-03T06:51:46.86Z",
+              "EditorCaption": " [Design]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
