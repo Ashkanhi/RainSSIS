@@ -2,13 +2,38 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>RainDWSSIS</Name>
-    <LastWriteTime>2025-02-11T12:15:08.4058403Z</LastWriteTime>
+    <LastWriteTime>2025-02-16T10:04:29.0207572Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
-      <Name>FillDimBaseDimes.dtsx</Name>
-      <LastWriteTime>2025-02-12T14:16:47.4696525Z</LastWriteTime>
+      <Name>Pkg_FillBaseInfo.dtsx</Name>
+      <LastWriteTime>2025-02-16T10:08:29.3554441Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_FilltemInfo.dtsx</Name>
+      <LastWriteTime>2025-02-16T07:55:06.8577688Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_FillCustomerInfo.dtsx</Name>
+      <LastWriteTime>2025-02-16T07:55:07.3097433Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_FillSaleInfo.dtsx</Name>
+      <LastWriteTime>2025-02-16T09:38:00.9803469Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_FillStockDocumentInfo.dtsx</Name>
+      <LastWriteTime>2025-02-16T09:55:44.4055026Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_RainProcess.dtsx</Name>
+      <LastWriteTime>2025-02-16T10:04:28.7857433Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
