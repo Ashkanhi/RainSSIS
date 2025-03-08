@@ -11,11 +11,39 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{AF1954B5-CD89-4703-8B81-1BB3FC44D7A7}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{CA66BFC4-F9FF-4794-A224-333D723A15AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0B72A582-6D24-4D55-8BDE-85296E3673AA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&#xA;DECLARE @DateNow DATETIME &#xA;&#xA;SET @DateNow = GETDATE ()&#xA;&#xA;SELECT&#x9;  SupplierID&#xA;&#x9;&#x9;, Name&#xA;&#x9;&#x9;, Mobile =  NULL&#xA;&#x9;&#x9;, Phone = NULL&#xA;&#x9;&#x9;, Address =  NULL&#xA;&#x9;&#x9;, Latitude = NULL&#xA;&#x9;&#x9;, Longitude= NULL &#xA;&#x9;&#x9;, EtlTime = @DateNow&#xA;&#xA;FROM &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].SupplierView X&#xA;WHERE NOT EXISTS (SELECT * FROM dbo.DimSupplier WHERE SupplierID = X.SupplierID)&#xA;AND LanguageID = 314&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DT_SourceFillDimSupplierInfo">
+      <DTS:VariableValue
+        DTS:DataType="8">
+DECLARE @DateNow DATETIME 
+
+SET @DateNow = GETDATE ()
+
+SELECT	  SupplierID
+		, Name
+		, Mobile =  NULL
+		, Phone = NULL
+		, Address =  NULL
+		, Latitude = NULL
+		, Longitude= NULL 
+		, EtlTime = @DateNow
+
+FROM [10.15.20.231\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].SupplierView X
+WHERE NOT EXISTS (SELECT * FROM dbo.DimSupplier WHERE SupplierID = X.SupplierID)
+AND LanguageID = 314
+</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{CD2AED95-C566-493E-9D48-5A1756BE2B6A}"
@@ -32,7 +60,7 @@ SELECT *
 		DECLARE @FilterRainDate DateTime ,
 				@DateNow DATETIME ;
 
-		SET @FilterRainDate =  CAST( ''2/26/2025 2:07:28 PM''  AS DATE) ;
+		SET @FilterRainDate =  CAST( ''3/5/2025 12:35:09 PM''  AS DATE) ;
 		SET @DateNow = GETDATE();
  
    
@@ -118,7 +146,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250226</DTS:VariableValue>
+        DTS:DataType="3">20250305</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -129,7 +157,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">2/26/2025 2:07:28 PM</DTS:VariableValue>
+        DTS:DataType="7">3/5/2025 12:35:09 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -192,7 +220,7 @@ SELECT *
           DTS:LocaleID="-1"
           DTS:ObjectName="DeleteFactStockDocument"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -221,7 +249,7 @@ SELECT *
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error DimStockDocument"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -231,14 +259,35 @@ SELECT *
               Language="CSharp"
               ReadOnlyVariables="User::VR_Seq_FilllStockInfo_03_FillDimStockDocument">
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_4d87e8da581d440a998b0db63bfd3b3a")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_4d87e8da581d440a998b0db63bfd3b3a")]
+[assembly: AssemblyCopyright("Copyright @  2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -358,6 +407,35 @@ SELECT *
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4d87e8da581d440a998b0db63bfd3b3a.Properties.Settings.get_Default():ST_4d87e8da581d440a998b0db63bfd3b3a.Properties.Sett" +
+    "ings")]
+
+namespace ST_4d87e8da581d440a998b0db63bfd3b3a.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
               <ProjectItem
                 Name="ScriptMain.cs"
                 Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
@@ -495,6 +573,26 @@ namespace ST_4d87e8da581d440a998b0db63bfd3b3a
 	}
 }]]></ProjectItem>
               <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>ST_4d87e8da581d440a998b0db63bfd3b3a</msb:CodeName>
+    <msb:DisplayName>ST_4d87e8da581d440a998b0db63bfd3b3a</msb:DisplayName>
+    <msb:ProjectId>{3B986846-ACA4-4E8E-AE1C-A645AA7369D6}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_4d87e8da581d440a998b0db63bfd3b3a.csproj" />
+    <msb:File Include="ScriptMain.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
                 Name="ST_4d87e8da581d440a998b0db63bfd3b3a.csproj"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -580,84 +678,14 @@ namespace ST_4d87e8da581d440a998b0db63bfd3b3a
   </ProjectExtensions>
 </Project>]]></ProjectItem>
               <ProjectItem
-                Name="Project"
-                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
-  <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
-    <msb:CodeName>ST_4d87e8da581d440a998b0db63bfd3b3a</msb:CodeName>
-    <msb:DisplayName>ST_4d87e8da581d440a998b0db63bfd3b3a</msb:DisplayName>
-    <msb:ProjectId>{3B986846-ACA4-4E8E-AE1C-A645AA7369D6}</msb:ProjectId>
-  </msb:PropertyGroup>
-  <msb:ItemGroup>
-    <msb:Project Include="ST_4d87e8da581d440a998b0db63bfd3b3a.csproj" />
-    <msb:File Include="ScriptMain.cs" />
-    <msb:File Include="Properties\Settings.settings" />
-    <msb:File Include="Properties\AssemblyInfo.cs" />
-    <msb:File Include="Properties\Resources.resx" />
-    <msb:File Include="Properties\Resources.Designer.cs" />
-    <msb:File Include="Properties\Settings.Designer.cs" />
-  </msb:ItemGroup>
-</c:Project>]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\Settings.Designer.cs"
-                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4d87e8da581d440a998b0db63bfd3b3a.Properties.Settings.get_Default():ST_4d87e8da581d440a998b0db63bfd3b3a.Properties.Sett" +
-    "ings")]
-
-namespace ST_4d87e8da581d440a998b0db63bfd3b3a.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-              <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_4d87e8da581d440a998b0db63bfd3b3a")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_4d87e8da581d440a998b0db63bfd3b3a")]
-[assembly: AssemblyCopyright("Copyright @  2025")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -855,7 +883,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error FactStockDocument"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -1405,7 +1433,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error FillDimStock"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -1955,7 +1983,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error FillDimStockDocument"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -2499,6 +2527,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Seq_FillStockInfo\Error FillDimSupplier"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{95DC7904-A9E5-438B-ACD9-F9FE30F9DCBB}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Error FillDimSupplier"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_d122f47dc1824037a35a746bd9b00f6f"
+              VSTAMajorVersion="16"
+              VSTAMinorVersion="0"
+              Language="CSharp" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Seq_FillStockInfo\Error UpdateRefStatus"
           DTS:CreationName="Microsoft.ScriptTask"
           DTS:Description="Script Task"
@@ -2506,7 +2552,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error UpdateRefStatus"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -3100,7 +3146,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{9256B630-241E-4E66-B73C-7479BAF90213}"
-              SQLTask:SqlStatementSource=" DECLARE  @LinkServerPath NVARCHAR(50)&#xA;&#x9;&#x9;, @DateNow DATETIME &#xA;&#x9;&#x9;,  @CompanyID INT &#xA;&#x9;&#x9;, @SQL NVARCHAR(MAX); &#xA;&#xA;&#x9;&#x9;SET @DateNow =  GETDATE()&#x9;&#xA;&#x9;&#x9;SET @LinkServerPath = ( ? )&#xA;&#x9;&#x9;SET @CompanyID = ( ? )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;SET @SQL =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INSERT INTO dbo.DimStockDocument&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;( DocumentID  , DocumentCode , EtlTime )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT    DocumentID , DocumentCode , @DateNowParam&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;FROM '+ @LinkServerPath +'[dbo].StockDocument X&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE NOT EXISTS (SELECT * FROM dbo.DimStockDocument WHERE DocumentID = X.DocumentID)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;GROUP BY DocumentID , DocumentCode&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-- Execute sp_executesql with parameter definitions&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;EXEC sp_executesql &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@SQL,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;N'@CompanyIdParam INT, @DateNowParam DATETIME',&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@CompanyIdParam = @CompanyID,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@DateNowParam = @DateNow;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;&#x9;&#x9;&#x9; SET   ?&#x9; = (  CONCAT (  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;     CHAR(13)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  , 'Insert Success ' &#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ,  '01_Seq_FillStockInfo_FillDimStockDocument '&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  , @DateNow&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ,  CHAR(13)&#xA;&#x9;&#x9;&#x9;&#x9; &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource=" DECLARE  @LinkServerPath NVARCHAR(50)&#xA;&#x9;&#x9;, @DateNow DATETIME &#xA;&#x9;&#x9;,  @CompanyID INT &#xA;&#x9;&#x9;, @SQL NVARCHAR(MAX); &#xA;&#xA;&#x9;&#x9;SET @DateNow =  GETDATE()&#x9;&#xA;&#x9;&#x9;SET @LinkServerPath = ( ? )&#xA;&#x9;&#x9;SET @CompanyID = ( ? )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;SET @SQL =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;N'&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INSERT INTO dbo.DimStockDocument&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;( DocumentID  , DocumentCode , EtlTime , DocumentStatus )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT    DocumentID , DocumentCode , @DateNowParam ,CASE WHEN  StatusID = 246 &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; THEN N''تصویب''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  WHEN  StatusID = 247&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; THEN N''ابطال''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ELSE N''درحال کار''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;END &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;FROM '+ @LinkServerPath +'[dbo].StockDocument X&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE NOT EXISTS (SELECT * FROM dbo.DimStockDocument WHERE DocumentID = X.DocumentID)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;GROUP BY DocumentID , DocumentCode, StatusID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-- Execute sp_executesql with parameter definitions&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;EXEC sp_executesql &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@SQL,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;N'@CompanyIdParam INT, @DateNowParam DATETIME',&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@CompanyIdParam = @CompanyID,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@DateNowParam = @DateNow;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;&#x9;&#x9;&#x9; SET   ?&#x9; = (  CONCAT (  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;     CHAR(13)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  , 'Insert Success ' &#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ,  '01_Seq_FillStockInfo_FillDimStockDocument '&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  , @DateNow&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  ,  CHAR(13)&#xA;&#x9;&#x9;&#x9;&#x9; &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="$Project::PR_LinkServerPath"
@@ -3120,6 +3166,458 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 SQLTask:DataType="130"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Seq_FillStockInfo\FillDimSupplier"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F568D4DD-6EF5-413D-8E62-788CB385C91C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FillDimSupplier"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Dsn_SetData_DimSupplier"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimSupplier]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Connections[OleDbConnection]"
+                      connectionManagerID="{9256B630-241E-4E66-B73C-7479BAF90213}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[SupplierID]"
+                          cachedDataType="guid"
+                          cachedName="SupplierID"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="101"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Mobile]"
+                          cachedDataType="i4"
+                          cachedName="Mobile"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Mobile]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Phone]"
+                          cachedDataType="i4"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Phone]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Address]"
+                          cachedDataType="i4"
+                          cachedName="Address"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Address]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                          cachedDataType="i4"
+                          cachedName="Latitude"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                          cachedDataType="i4"
+                          cachedName="Longitude"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                        <inputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].Columns[EtlTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="EtlTime"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[EtlTime]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[EtlTime]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                          dataType="guid"
+                          name="SupplierID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="100"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                          dataType="wstr"
+                          length="50"
+                          name="Mobile" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          dataType="wstr"
+                          length="50"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          dataType="wstr"
+                          length="50"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                          dataType="numeric"
+                          name="Latitude"
+                          precision="18"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                          dataType="numeric"
+                          name="Longitude"
+                          precision="18"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input].ExternalColumns[EtlTime]"
+                          dataType="dbTimeStamp"
+                          name="EtlTime" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Src_GetData_Supplier"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::DT_SourceFillDimSupplierInfo</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Connections[OleDbConnection]"
+                      connectionManagerID="{9256B630-241E-4E66-B73C-7479BAF90213}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                          name="SupplierID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="101"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Mobile]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Mobile]"
+                          name="Mobile"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Phone]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Phone]"
+                          name="Phone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Address]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Address]"
+                          name="Address"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Latitude]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Latitude]"
+                          name="Latitude"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Longitude]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[Longitude]"
+                          name="Longitude"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[EtlTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[EtlTime]"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].Columns[EtlTime]"
+                          name="EtlTime"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                          dataType="guid"
+                          name="SupplierID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="101"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                          dataType="i4"
+                          name="Mobile" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          dataType="i4"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          dataType="i4"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                          dataType="i4"
+                          name="Latitude" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                          dataType="i4"
+                          name="Longitude" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output].ExternalColumns[EtlTime]"
+                          dataType="dbTimeStamp"
+                          name="EtlTime" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                          dataType="guid"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                          name="SupplierID" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="101"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                          name="Mobile" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          name="Phone" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          name="Address" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                          name="Latitude" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                          name="Longitude" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[EtlTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[EtlTime]"
+                          name="EtlTime" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Seq_FillStockInfo\FillDimSupplier.Paths[OLE DB Source Output]"
+                  endId="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3758,9 +4256,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           scale="3" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillStockInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].ExternalColumns[Reserve1]"
-                          dataType="wstr"
-                          length="50"
-                          name="Reserve1" />
+                          dataType="numeric"
+                          name="Reserve1"
+                          precision="38"
+                          scale="9" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillStockInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].ExternalColumns[Reserve2]"
                           dataType="wstr"
@@ -4892,7 +5391,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Success DimStockDocument"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -6734,6 +7233,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Seq_FillStockInfo\Success FillDimSupplier"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{3520C77B-367A-442A-9AD5-0A9AFFFA0121}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Success FillDimSupplier"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_549bb6def8f34132a9ca89c061eb6fdb"
+              VSTAMajorVersion="16"
+              VSTAMinorVersion="0"
+              Language="CSharp" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Seq_FillStockInfo\Success FillFactStockDocument"
           DTS:CreationName="Microsoft.ScriptTask"
           DTS:Description="Insert FillFactStockDocument"
@@ -7336,7 +7853,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Success UpdateRefStatus"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -7943,7 +8460,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           DTS:LocaleID="-1"
           DTS:ObjectName="UpdateRefStatus"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -8023,13 +8540,38 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           DTS:ObjectName="Constraint 13"
           DTS:To="Package\Seq_FillStockInfo\Success DimStockDocument" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 2]"
+          DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 14]"
           DTS:CreationName=""
-          DTS:DTSID="{2b95d361-027e-4f6c-81d8-dcc5cd4120a8}"
+          DTS:DTSID="{1A136204-3AD7-4E50-8632-8E8CC02AF0B7}"
+          DTS:From="Package\Seq_FillStockInfo\FillDimSupplier"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 14"
+          DTS:To="Package\Seq_FillStockInfo\Success FillDimSupplier" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 15]"
+          DTS:CreationName=""
+          DTS:DTSID="{C595CA92-DEEC-42F9-B15C-90B8B7337125}"
+          DTS:From="Package\Seq_FillStockInfo\Success FillDimSupplier"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 15"
+          DTS:To="Package\Seq_FillStockInfo\DeleteFactStockDocument" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 16]"
+          DTS:CreationName=""
+          DTS:DTSID="{02C23ECD-AE61-4DD2-9BEC-C077A36D7966}"
           DTS:From="Package\Seq_FillStockInfo\Success FillDimStock"
           DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 16"
+          DTS:To="Package\Seq_FillStockInfo\FillDimSupplier" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{FA543E8B-9E95-4F40-9A1D-80B9D914CF2B}"
+          DTS:From="Package\Seq_FillStockInfo\FillDimSupplier"
+          DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Seq_FillStockInfo\DeleteFactStockDocument" />
+          DTS:To="Package\Seq_FillStockInfo\Error FillDimSupplier"
+          DTS:Value="1" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -8103,117 +8645,141 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="206,42"
+          Size="202,42"
           Id="Package\Seq_FillStockInfo\DeleteFactStockDocument"
-          TopLeft="6.5555555555552,258" />
+          TopLeft="65.4444444444441,339.111111111111" />
+        <NodeLayout
+          Size="177,44"
+          Id="Package\Seq_FillStockInfo\Error DimStockDocument"
+          TopLeft="955.666666666667,316.444444444444" />
         <NodeLayout
           Size="176,42"
           Id="Package\Seq_FillStockInfo\Error FactStockDocument"
-          TopLeft="265.333333333334,230.333333333334" />
+          TopLeft="454.222222222223,293.666666666667" />
         <NodeLayout
           Size="142,42"
           Id="Package\Seq_FillStockInfo\Error FillDimStock"
-          TopLeft="265.222222222223,20.4444444444446" />
+          TopLeft="436.333333333334,6.00000000000016" />
         <NodeLayout
           Size="193,42"
           Id="Package\Seq_FillStockInfo\Error FillDimStockDocument"
-          TopLeft="776.555555555556,38.1111111111115" />
+          TopLeft="957.666666666667,38.1111111111115" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Seq_FillStockInfo\Error FillDimSupplier"
+          TopLeft="469.111111111111,163.888888888889" />
         <NodeLayout
           Size="160,42"
           Id="Package\Seq_FillStockInfo\Error UpdateRefStatus"
-          TopLeft="839,407" />
+          TopLeft="1025.66666666667,433.666666666667" />
         <NodeLayout
           Size="136,42"
           Id="Package\Seq_FillStockInfo\FillDimStock"
-          TopLeft="34.1111111111115,53.7777777777785" />
+          TopLeft="255.555555555556,40.4444444444452" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Seq_FillStockInfo\FillDimStockDocument"
+          TopLeft="841.666666666667,218.444444444444" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Seq_FillStockInfo\FillDimSupplier"
+          TopLeft="234.666666666667,163.888888888889" />
         <NodeLayout
           Size="206,42"
           Id="Package\Seq_FillStockInfo\FillFactStockDocument"
-          TopLeft="478.777777777778,100.333333333333" />
+          TopLeft="659.888888888889,100.333333333333" />
+        <NodeLayout
+          Size="175,45"
+          Id="Package\Seq_FillStockInfo\Success DimStockDocument"
+          TopLeft="756.666666666667,315.444444444444" />
         <NodeLayout
           Size="180,42"
           Id="Package\Seq_FillStockInfo\Success FactStockDocument"
-          TopLeft="272.666666666667,381.666666666667" />
+          TopLeft="470.444444444445,499.444444444445" />
         <NodeLayout
           Size="140,42"
           Id="Package\Seq_FillStockInfo\Success FillDimStock"
-          TopLeft="275,111.333333333333" />
+          TopLeft="59.4444444444445,30.2222222222219" />
+        <NodeLayout
+          Size="148,43"
+          Id="Package\Seq_FillStockInfo\Success FillDimSupplier"
+          TopLeft="28.0000000000001,166.111111111111" />
         <NodeLayout
           Size="189,44"
           Id="Package\Seq_FillStockInfo\Success FillFactStockDocument"
-          TopLeft="781,105.888888888889" />
+          TopLeft="962.111111111111,105.888888888889" />
         <NodeLayout
           Size="159,44"
           Id="Package\Seq_FillStockInfo\Success UpdateRefStatus"
-          TopLeft="777,505" />
+          TopLeft="963.666666666667,531.666666666667" />
         <NodeLayout
           Size="163,42"
           Id="Package\Seq_FillStockInfo\UpdateRefStatus"
-          TopLeft="652,408" />
+          TopLeft="838.666666666667,434.666666666667" />
         <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint]"
-          TopLeft="170.111111111111,69.1111111111118">
+          TopLeft="391.555555555556,61.4444444444452">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.1111111111115,-27.6666666666672"
+              EndConnector="44.7777777777781,-34.4444444444451"
               Start="0,0"
-              End="87.6111111111115,-27.6666666666672">
+              End="37.2777777777781,-34.4444444444451">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.1386340468911,0" />
+                    End="18.388888888889,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="36.1386340468911,0"
-                    Point2="40.1386340468911,0"
-                    Point3="40.1386340468911,-4" />
+                    Point1="18.388888888889,0"
+                    Point2="22.388888888889,0"
+                    Point3="22.388888888889,-4" />
                   <mssgle:LineSegment
-                    End="40.1386340468911,-23.6666666666672" />
+                    End="22.388888888889,-30.4444444444451" />
                   <mssgle:CubicBezierSegment
-                    Point1="40.1386340468911,-23.6666666666672"
-                    Point2="40.1386340468911,-27.6666666666672"
-                    Point3="44.1386340468911,-27.6666666666672" />
+                    Point1="22.388888888889,-30.4444444444451"
+                    Point2="22.388888888889,-34.4444444444451"
+                    Point3="26.388888888889,-34.4444444444451" />
                   <mssgle:LineSegment
-                    End="87.6111111111115,-27.6666666666672" />
+                    End="37.2777777777781,-34.4444444444451" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="24.8972863906411,1,30.4826953125,9.7490234375"
+              BoundingBox="7.14754123263903,1,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 1]"
-          TopLeft="170.111111111111,80.4444444444452">
+          TopLeft="255.555555555556,61.4444444444452">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.888888888889,51.8888888888878"
+              EndConnector="-56.1111111111116,-10.2222222222233"
               Start="0,0"
-              End="97.3888888888885,51.8888888888878">
+              End="-48.6111111111116,-10.2222222222233">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="40.2650356778796,0" />
+                    End="-24.0555555555558,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="40.2650356778796,0"
-                    Point2="44.2650356778796,0"
-                    Point3="44.2650356778796,4" />
+                    Point1="-24.0555555555558,0"
+                    Point2="-28.0555555555558,0"
+                    Point3="-28.0555555555558,-4" />
                   <mssgle:LineSegment
-                    End="44.2650356778796,47.8888888888878" />
+                    End="-28.0555555555558,-6.22222222222328" />
                   <mssgle:CubicBezierSegment
-                    Point1="44.2650356778796,47.8888888888878"
-                    Point2="44.2650356778796,51.8888888888878"
-                    Point3="48.2650356778796,51.8888888888878" />
+                    Point1="-28.0555555555558,-6.22222222222328"
+                    Point2="-28.0555555555558,-10.2222222222233"
+                    Point3="-32.0555555555558,-10.2222222222233" />
                   <mssgle:LineSegment
-                    End="97.3888888888885,51.8888888888878" />
+                    End="-48.6111111111116,-10.2222222222233" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8224,7 +8790,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 10]"
-          TopLeft="733.5,450">
+          TopLeft="920.166666666667,476.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8257,274 +8823,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 2]"
-          TopLeft="345,153.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-235.444444444445,104.666666666667"
-              Start="0,0"
-              End="-235.444444444445,97.1666666666665">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,48.3333333333333"
-                    Point2="0,52.3333333333333"
-                    Point3="-4,52.3333333333333" />
-                  <mssgle:LineSegment
-                    End="-231.444444444445,52.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-231.444444444445,52.3333333333333"
-                    Point2="-235.444444444445,52.3333333333333"
-                    Point3="-235.444444444445,56.3333333333333" />
-                  <mssgle:LineSegment
-                    End="-235.444444444445,97.1666666666665" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 3]"
-          TopLeft="684.777777777778,115.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="91.7777777777779,-56.5555555555551"
-              Start="0,0"
-              End="84.2777777777779,-56.5555555555551">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="34.7319062181448,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="34.7319062181448,0"
-                    Point2="38.7319062181448,0"
-                    Point3="38.7319062181448,-4" />
-                  <mssgle:LineSegment
-                    End="38.7319062181448,-52.5555555555551" />
-                  <mssgle:CubicBezierSegment
-                    Point1="38.7319062181448,-52.5555555555551"
-                    Point2="38.7319062181448,-56.5555555555551"
-                    Point3="42.7319062181448,-56.5555555555551" />
-                  <mssgle:LineSegment
-                    End="84.2777777777779,-56.5555555555551" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="23.4905585618948,1,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 4]"
-          TopLeft="684.777777777778,127.444444444444">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96.2222222222219,0"
-              Start="0,0"
-              End="88.7222222222219,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="88.7222222222219,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 5]"
-          TopLeft="212.555555555555,279">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="52.7777777777788,-27.666666666666"
-              Start="0,0"
-              End="45.2777777777788,-27.666666666666">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="22.3888888888894,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="22.3888888888894,0"
-                    Point2="26.3888888888894,0"
-                    Point3="26.3888888888894,-4" />
-                  <mssgle:LineSegment
-                    End="26.3888888888894,-23.666666666666" />
-                  <mssgle:CubicBezierSegment
-                    Point1="26.3888888888894,-23.666666666666"
-                    Point2="26.3888888888894,-27.666666666666"
-                    Point3="30.3888888888894,-27.666666666666" />
-                  <mssgle:LineSegment
-                    End="45.2777777777788,-27.666666666666" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="11.1475412326394,1,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 6]"
-          TopLeft="109.555555555555,300">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="224.444444444445,81.666666666667"
-              Start="0,0"
-              End="224.444444444445,74.166666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5682819383262" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.5682819383262"
-                    Point2="0,48.5682819383262"
-                    Point3="4,48.5682819383262" />
-                  <mssgle:LineSegment
-                    End="220.444444444445,48.5682819383262" />
-                  <mssgle:CubicBezierSegment
-                    Point1="220.444444444445,48.5682819383262"
-                    Point2="224.444444444445,48.5682819383262"
-                    Point3="224.444444444445,52.5682819383262" />
-                  <mssgle:LineSegment
-                    End="224.444444444445,74.166666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 7]"
-          TopLeft="391.333333333334,381.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="190.444444444444,-239.333333333334"
-              Start="0,0"
-              End="190.444444444444,-231.833333333334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-92.9985315712189" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-92.9985315712189"
-                    Point2="0,-96.9985315712189"
-                    Point3="4,-96.9985315712189" />
-                  <mssgle:LineSegment
-                    End="186.444444444444,-96.9985315712189" />
-                  <mssgle:CubicBezierSegment
-                    Point1="186.444444444444,-96.9985315712189"
-                    Point2="190.444444444444,-96.9985315712189"
-                    Point3="190.444444444444,-100.998531571219" />
-                  <mssgle:LineSegment
-                    End="190.444444444444,-231.833333333334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 9]"
-          TopLeft="815,428.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="24,0"
-              Start="0,0"
-              End="16.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="16.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.99134765625,5,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Seq_FillStockInfo\FillDimStockDocument"
-          TopLeft="735,204" />
-        <EdgeLayout
-          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 8]"
-          TopLeft="875.5,149.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-48.5,54.111111111111"
-              Start="0,0"
-              End="-48.5,46.611111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0555555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.0555555555555"
-                    Point2="0,27.0555555555555"
-                    Point3="-4,27.0555555555555" />
-                  <mssgle:LineSegment
-                    End="-44.5,27.0555555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-44.5,27.0555555555555"
-                    Point2="-48.5,27.0555555555555"
-                    Point3="-48.5,31.0555555555555" />
-                  <mssgle:LineSegment
-                    End="-48.5,46.611111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="175,45"
-          Id="Package\Seq_FillStockInfo\Success DimStockDocument"
-          TopLeft="650,301" />
-        <NodeLayout
-          Size="177,44"
-          Id="Package\Seq_FillStockInfo\Error DimStockDocument"
-          TopLeft="849,302" />
-        <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 11]"
-          TopLeft="856.333333333333,246">
+          TopLeft="963,260.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8560,18 +8860,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 12]"
-          TopLeft="735.5,346">
+          TopLeft="844.166666666667,360.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62"
+              EndConnector="76.0000000000001,74.2222222222223"
               Start="0,0"
-              End="0,54.5">
+              End="76.0000000000001,66.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.5" />
+                    End="0,33.1111111111112" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.1111111111112"
+                    Point2="0,37.1111111111112"
+                    Point3="4,37.1111111111112" />
+                  <mssgle:LineSegment
+                    End="72.0000000000001,37.1111111111112" />
+                  <mssgle:CubicBezierSegment
+                    Point1="72.0000000000001,37.1111111111112"
+                    Point2="76.0000000000001,37.1111111111112"
+                    Point3="76.0000000000001,41.1111111111112" />
+                  <mssgle:LineSegment
+                    End="76.0000000000001,66.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8582,7 +8894,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 13]"
-          TopLeft="797.666666666667,246">
+          TopLeft="904.333333333334,260.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8614,21 +8926,416 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 14]"
+          TopLeft="234.666666666667,186.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-58.6666666666667,0"
+              Start="0,0"
+              End="-51.1666666666667,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-51.1666666666667,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 15]"
+          TopLeft="102,209.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.444444444444,130"
+              Start="0,0"
+              End="64.444444444444,122.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.9999999999999"
+                    Point2="0,64.9999999999999"
+                    Point3="4,64.9999999999999" />
+                  <mssgle:LineSegment
+                    End="60.444444444444,64.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.444444444444,64.9999999999999"
+                    Point2="64.444444444444,64.9999999999999"
+                    Point3="64.444444444444,68.9999999999999" />
+                  <mssgle:LineSegment
+                    End="64.444444444444,122.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 16]"
+          TopLeft="129.444444444445,72.2222222222219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.722222222222,91.666666666667"
+              Start="0,0"
+              End="179.722222222222,84.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8333333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.8333333333335"
+                    Point2="0,45.8333333333335"
+                    Point3="4,45.8333333333335" />
+                  <mssgle:LineSegment
+                    End="175.722222222222,45.8333333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.722222222222,45.8333333333335"
+                    Point2="179.722222222222,45.8333333333335"
+                    Point3="179.722222222222,49.8333333333335" />
+                  <mssgle:LineSegment
+                    End="179.722222222222,84.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 2]"
+          TopLeft="383.666666666667,184.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.4444444444446,0"
+              Start="0,0"
+              End="77.9444444444446,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="77.9444444444446,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.7308745659723,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 3]"
+          TopLeft="865.888888888889,115.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.7777777777779,-56.5555555555551"
+              Start="0,0"
+              End="84.2777777777779,-56.5555555555551">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.7319062181448,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.7319062181448,0"
+                    Point2="38.7319062181448,0"
+                    Point3="38.7319062181448,-4" />
+                  <mssgle:LineSegment
+                    End="38.7319062181448,-52.5555555555551" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.7319062181448,-52.5555555555551"
+                    Point2="38.7319062181448,-56.5555555555551"
+                    Point3="42.7319062181448,-56.5555555555551" />
+                  <mssgle:LineSegment
+                    End="84.2777777777779,-56.5555555555551" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.4905585618948,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 4]"
+          TopLeft="865.888888888889,127.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.2222222222219,0"
+              Start="0,0"
+              End="88.7222222222219,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="88.7222222222219,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 5]"
+          TopLeft="267.444444444444,360.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186.777777777779,-45.4444444444437"
+              Start="0,0"
+              End="179.277777777779,-45.4444444444437">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="89.3888888888894,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89.3888888888894,0"
+                    Point2="93.3888888888894,0"
+                    Point3="93.3888888888894,-4" />
+                  <mssgle:LineSegment
+                    End="93.3888888888894,-41.4444444444437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.3888888888894,-41.4444444444437"
+                    Point2="93.3888888888894,-45.4444444444437"
+                    Point3="97.3888888888894,-45.4444444444437" />
+                  <mssgle:LineSegment
+                    End="179.277777777779,-45.4444444444437" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="78.1475412326394,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 6]"
+          TopLeft="166.444444444444,381.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="365.333333333334,118.333333333334"
+              Start="0,0"
+              End="365.333333333334,110.833333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.3744493392073" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.3744493392073"
+                    Point2="0,70.3744493392073"
+                    Point3="4,70.3744493392073" />
+                  <mssgle:LineSegment
+                    End="361.333333333334,70.3744493392073" />
+                  <mssgle:CubicBezierSegment
+                    Point1="361.333333333334,70.3744493392073"
+                    Point2="365.333333333334,70.3744493392073"
+                    Point3="365.333333333334,74.3744493392073" />
+                  <mssgle:LineSegment
+                    End="365.333333333334,110.833333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 7]"
+          TopLeft="589.111111111111,499.444444444445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="173.777777777778,-357.111111111112"
+              Start="0,0"
+              End="173.777777777778,-349.611111111112">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-140.732256485561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-140.732256485561"
+                    Point2="0,-144.732256485561"
+                    Point3="4,-144.732256485561" />
+                  <mssgle:LineSegment
+                    End="169.777777777778,-144.732256485561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="169.777777777778,-144.732256485561"
+                    Point2="173.777777777778,-144.732256485561"
+                    Point3="173.777777777778,-148.732256485561" />
+                  <mssgle:LineSegment
+                    End="173.777777777778,-349.611111111112" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 8]"
+          TopLeft="1056.61111111111,149.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.944444444444,68.5555555555554"
+              Start="0,0"
+              End="-122.944444444444,61.0555555555554">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.2777777777777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.2777777777777"
+                    Point2="0,34.2777777777777"
+                    Point3="-4,34.2777777777777" />
+                  <mssgle:LineSegment
+                    End="-118.944444444444,34.2777777777777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.944444444444,34.2777777777777"
+                    Point2="-122.944444444444,34.2777777777777"
+                    Point3="-122.944444444444,38.2777777777777" />
+                  <mssgle:LineSegment
+                    End="-122.944444444444,61.0555555555554" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo.PrecedenceConstraints[Constraint 9]"
+          TopLeft="1001.66666666667,455.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24,0"
+              Start="0,0"
+              End="16.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="16.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.99134765625,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1060,604"
-          Size="1060,647"
+          PanelSize="1228,631"
+          Size="1228,674"
           Id="Package\Seq_FillStockInfo"
-          TopLeft="53,222" />
+          TopLeft="51.5,2.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Seq_FillStockInfo\FillDimSupplier">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="214,47"
+          Id="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier"
+          TopLeft="613,281" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier"
+          TopLeft="621,108" />
+        <EdgeLayout
+          Id="Package\Seq_FillStockInfo\FillDimSupplier.Paths[OLE DB Source Output]"
+          TopLeft="719.75,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,131"
+              Start="0,0"
+              End="0,123.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,123.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillStockInfo\FillDimSupplier\Dsn_SetData_DimSupplier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillStockInfo\FillDimSupplier\Src_GetData_Supplier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Seq_FillStockInfo\FillFactStockDocument">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217,42"
           Id="Package\Seq_FillStockInfo\FillFactStockDocument\Src_GetData_StockDocument"
@@ -8656,7 +9363,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
