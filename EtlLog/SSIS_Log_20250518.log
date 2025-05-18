@@ -1,0 +1,72 @@
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:03
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimDepartment
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:03
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Success DimDepartment
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimItem
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Success DimItem
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:06
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:06
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FilltemBaseIfno
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:06
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_FilltemInfo
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-18 13:53:06
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_FilltemInfo
+Script Task   : Pkg_FillBaseInfo_PostExecute
+Execution ID  : {740BCB51-7014-4BE5-BCD8-42C8ABDCDFF8}
+Status        : Success
+--------------------------------------------------
+
