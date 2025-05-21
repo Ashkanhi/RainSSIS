@@ -1,0 +1,54 @@
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : ProccessAllTask
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Success ProcessTask
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_Proccess
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_RainProcess
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-05-21 11:58:42
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_RainProcess
+Script Task   : Pkg_RainProcess
+Execution ID  : {306E9279-E241-468D-8FCD-451A0331F640}
+Status        : Success
+--------------------------------------------------
+
