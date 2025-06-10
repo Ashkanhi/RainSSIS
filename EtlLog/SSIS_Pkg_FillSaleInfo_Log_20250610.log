@@ -1,0 +1,63 @@
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:12
+Package Name  : Pkg_FillBaseInfo
+Source Task   : CheckCustomerExists
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:13
+Package Name  : Pkg_FillBaseInfo
+Source Task   : DeleteFactSaleReturn
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimSaleReturn
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FillSaleInfo
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_FillSaleInfo
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_FillSaleInfo
+Script Task   : Pkg_FillSaleInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+

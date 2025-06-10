@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillCustomerInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{4BB72651-818C-4C5B-85E2-035C43DDF372}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{4121CCF9-A1AC-4D1A-8662-1B060F17E564}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -90,7 +90,7 @@ AND NOT EXISTS (
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{9256B630-241E-4E66-B73C-7479BAF90213}"
+              SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
               SQLTask:SqlStatementSource="SELECT  *   FROM table_that_does_not_exist" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -167,8 +167,8 @@ AND NOT EXISTS (
                   <connections>
                     <connection
                       refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Dsn_SetData_DimCustomer.Connections[OleDbConnection]"
-                      connectionManagerID="{9256B630-241E-4E66-B73C-7479BAF90213}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -295,8 +295,7 @@ AND NOT EXISTS (
                           name="Mobile" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Dsn_SetData_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Birthday]"
-                          dataType="wstr"
-                          length="10"
+                          dataType="dbDate"
                           name="Birthday" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Dsn_SetData_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
@@ -407,8 +406,8 @@ AND NOT EXISTS (
                   <connections>
                     <connection
                       refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Connections[OleDbConnection]"
-                      connectionManagerID="{9256B630-241E-4E66-B73C-7479BAF90213}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -564,8 +563,7 @@ AND NOT EXISTS (
                           name="Mobile" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Output].ExternalColumns[Birthday]"
-                          dataType="wstr"
-                          length="10"
+                          dataType="dbDate"
                           name="Birthday" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Output].ExternalColumns[Address]"
@@ -639,8 +637,7 @@ AND NOT EXISTS (
                           name="Mobile" />
                         <outputColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Error Output].Columns[Birthday]"
-                          dataType="wstr"
-                          length="10"
+                          dataType="dbDate"
                           lineageId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Error Output].Columns[Birthday]"
                           name="Birthday" />
                         <outputColumn
@@ -714,7 +711,7 @@ AND NOT EXISTS (
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{9256B630-241E-4E66-B73C-7479BAF90213}"
+              SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
               SQLTask:SqlStatementSource="&#xA;DECLARE  @LinkServerPath NVARCHAR(50)&#xA;  , @DateNow DATETIME &#xA;  ,  @CompanyID INT &#xA;  , @SQL NVARCHAR(MAX);&#xA;&#xA;  SET @DateNow =  GETDATE() &#xA;  SET @LinkServerPath = ( ? )&#xA;  SET @CompanyID = ( ? )&#xA;&#xA; &#xA;  &#xA;      SET @SQL =&#xA;         '     &#xA;          INSERT INTO dbo.[DimCustomerGroup]&#xA;            ([GroupID]&#xA;             , [Name]&#xA;             , [EtlTime]&#xA;            )&#xA;          SELECT CustomerGroupID, Name , GETDATE()   FROM '+ @LinkServerPath +'[dbo].CustomerGroup X&#xA;          WHERE NOT EXISTS (SELECT * FROM dbo.[DimCustomerGroup] WHERE GroupID = X.CustomerGroupID)          &#xA; &#xA;             '      &#xA;&#xA;    -- print @SQL&#xA;&#xA;     -- Execute sp_executesql with parameter definitions&#xA;     EXEC sp_executesql &#xA;      @SQL,&#xA;      N'@CompanyIdParam INT, @DateNowParam DATETIME',&#xA;      @CompanyIdParam = @CompanyID,&#xA;      @DateNowParam = @DateNow;&#xA;&#xA;&#xA;     --SET   ?  = ('Ashkan' )&#xA;     SET   ?  = (  CONCAT (  @LinkServerPath&#xA;            ,  CHAR(13)&#xA;            , 'Insert Success '  &#xA;            ,  'Seq_FillCustomerInfo_02_DimCustomerGroup '&#xA;            , @DateNow&#xA;            ,  CHAR(13)&#xA;     &#xA;           )&#xA;         )&#xA;        &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -750,7 +747,7 @@ AND NOT EXISTS (
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{9256B630-241E-4E66-B73C-7479BAF90213}"
+              SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
               SQLTask:SqlStatementSource="DECLARE &#x9;@CurrentEtlTime DATETIME &#xA;&#x9;&#x9;&#xA;&#x9;SET @CurrentEtlTime = GETDATE()&#x9;&#xA;&#xA;&#x9;INSERT INTO DimEtlTime (EtlTime, EtlYear, EtlMonth, EtlDay, EtlHour, EtlMinute , ObjectName ,PersianEtlTime  )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;VALUES (&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@CurrentEtlTime,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;YEAR(@CurrentEtlTime),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;MONTH(@CurrentEtlTime),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;DAY(@CurrentEtlTime),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;DATEPART(HOUR, @CurrentEtlTime),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;DATEPART(MINUTE, @CurrentEtlTime) , &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'Pkg_FillCustomerInfo' , &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;       CONCAT (FORMAT(@CurrentEtlTime, 'yyyy/MM/dd', 'fa')&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   , ' '  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   , CAST ( @CurrentEtlTime AS TIME  )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -795,6 +792,10 @@ AND NOT EXISTS (
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Seq_FillCustomerInfo\Execute SQL Task"
+          TopLeft="323,113" />
         <NodeLayout
           Size="155,42"
           Id="Package\Seq_FillCustomerInfo\FillDimCustomer"
@@ -842,6 +843,28 @@ AND NOT EXISTS (
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Seq_FillCustomerInfo.PrecedenceConstraints[Constraint 1]"
+          TopLeft="408,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-91"
+              Start="0,0"
+              End="0,-83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Seq_FillCustomerInfo.PrecedenceConstraints[Constraint 2]"
           TopLeft="229.5,251">
           <EdgeLayout.Curve>
@@ -875,39 +898,13 @@ AND NOT EXISTS (
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Seq_FillCustomerInfo\Execute SQL Task"
-          TopLeft="323,113" />
-        <EdgeLayout
-          Id="Package\Seq_FillCustomerInfo.PrecedenceConstraints[Constraint 1]"
-          TopLeft="408,246">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-91"
-              Start="0,0"
-              End="0,-83.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-83.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="546,455"
-          Size="546,498"
+          PanelSize="552,311"
+          Size="552,354"
           Id="Package\Seq_FillCustomerInfo"
-          TopLeft="392,137" />
+          TopLeft="187,75" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -951,6 +948,19 @@ AND NOT EXISTS (
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillCustomerInfo\FillDimCustomer\Dsn_SetData_DimCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer">
     <Properties>

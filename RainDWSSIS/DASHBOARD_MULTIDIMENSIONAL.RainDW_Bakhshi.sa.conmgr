@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa"
+  DTS:DTSID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DASHBOARD\MULTIDIMENSIONAL;User ID=sa;Initial Catalog=RainDW_Bakhshi;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-RainDWSSIS-{F5D3767B-013C-4373-B1FC-DA2F9A79F694}DASHBOARD\MULTIDIMENSIONAL.RainDW_Bakhshi.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtlbMbGb1a0iFwfmZg8tWggAAAAACAAAAAAADZgAAwAAAABAAAABzzwnsLv7aV6AI1fkeltQ6AAAAAASAAACgAAAAEAAAAAc2sLFir7nLVpNdTIcpybx4AAAAj6JEneAK1f7+l/LdRhlgwxGCArisxXxTbspI5tIbmQ6YE6v2FHd/1yH/1M+YzdNGsevIB0woU17OO8VKO/GGOkviQXXvRPnm1NnXuQnIfAM4LrnGcmCnl47WqHJViBdSo+Deeo4EJx39/DH6aNhD59kuTfQvi6OXFAAAAPZLyvQUfQmqPG7Ewfm8YzSosoP3</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

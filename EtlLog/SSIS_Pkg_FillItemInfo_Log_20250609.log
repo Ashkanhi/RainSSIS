@@ -1,0 +1,54 @@
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:48
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimDepartment
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:50
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimItem
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:50
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:50
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FilltemBaseIfno
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:50
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_FilltemInfo
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-09 10:09:50
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_FilltemInfo
+Script Task   : Pkg_FillItemInfo_PostExecute
+Execution ID  : {7BE4D401-BC7B-4031-9A2F-B4E5FC1E74EB}
+Status        : Success
+--------------------------------------------------
+

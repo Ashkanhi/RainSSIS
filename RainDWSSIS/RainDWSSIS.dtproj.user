@@ -8,8 +8,8 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <ServerName />
-        <PathOnServer />
+        <ServerName>DASHBOARD\MULTIDIMENSIONAL</ServerName>
+        <PathOnServer>/SSISDB/NewExport/RainDWSSIS</PathOnServer>
         <StartObjectID>Pkg_FillBaseInfo.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />

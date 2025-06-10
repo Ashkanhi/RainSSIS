@@ -1,0 +1,54 @@
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimCustomer
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimCustomerGroup
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FillCustomerInfo
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_FillCustomerInfo
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:05
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_FillCustomerInfo
+Script Task   : Pkg_FillCutomerInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+

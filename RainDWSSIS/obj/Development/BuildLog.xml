@@ -2,38 +2,43 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>RainDWSSIS</Name>
-    <LastWriteTime>2025-05-18T10:21:58.7325814Z</LastWriteTime>
+    <LastWriteTime>2025-06-10T07:58:12.402517Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Pkg_FillBaseInfo.dtsx</Name>
-      <LastWriteTime>2025-05-26T14:07:02.0222578Z</LastWriteTime>
+      <LastWriteTime>2025-06-10T08:06:19.2610167Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_FilltemInfo.dtsx</Name>
-      <LastWriteTime>2025-05-24T07:16:23.5476836Z</LastWriteTime>
+      <LastWriteTime>2025-06-08T10:44:21.5582915Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_FillCustomerInfo.dtsx</Name>
-      <LastWriteTime>2025-05-26T13:55:58.8268799Z</LastWriteTime>
+      <LastWriteTime>2025-06-08T10:44:21.6676952Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_FillSaleInfo.dtsx</Name>
-      <LastWriteTime>2025-05-26T14:07:02.1483696Z</LastWriteTime>
+      <LastWriteTime>2025-06-08T10:44:21.7614305Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_FillStockDocumentInfo.dtsx</Name>
-      <LastWriteTime>2025-05-24T07:16:23.9269592Z</LastWriteTime>
+      <LastWriteTime>2025-06-10T07:18:27.1943978Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_RainProcess.dtsx</Name>
-      <LastWriteTime>2025-05-24T07:16:24.2761919Z</LastWriteTime>
+      <LastWriteTime>2025-06-08T12:46:28.4808232Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_FillBaseSaleInfo.dtsx</Name>
+      <LastWriteTime>2025-06-10T07:58:12.3401262Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

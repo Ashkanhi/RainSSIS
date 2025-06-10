@@ -1,0 +1,72 @@
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:15
+Package Name  : Pkg_FillBaseInfo
+Source Task   : DeleteFactStockDocument
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:18
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillFactStockDocument
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:18
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimStockDocument
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:19
+Package Name  : Pkg_FillBaseInfo
+Source Task   : UpdateRefStatus
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:19
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:19
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FillStockDocumentInfo
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:19
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Pkg_FillStockDocumentInfo
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-06-10 11:38:19
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Run_Pkg_FillStockDocumentInfo
+Script Task   : Pkg_FillStockDocumentInfo_PostExecute
+Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Status        : Success
+--------------------------------------------------
+
