@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\BI\\BiProject\\ETL\\RainSSIS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillSaleInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
       "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillSaleInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillCustomerInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillCustomerInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FilltemInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FilltemInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseSaleInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
       "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillBaseSaleInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillCustomerInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillCustomerInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
       "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillBaseInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FilltemInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FilltemInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{4CB5B79D-8F39-4D69-A4AD-3003C384F75F}|RainDWSSIS\\RainDWSSIS.dtproj|solutionrelative:RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +42,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Pkg_FillBaseInfo.dtsx [Design]",
+              "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseInfo.dtsx",
+              "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FillBaseInfo.dtsx",
+              "ToolTip": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseInfo.dtsx [Design]",
+              "RelativeToolTip": "RainDWSSIS\\Pkg_FillBaseInfo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-06-10T07:58:00.166Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Pkg_FillStockDocumentInfo.dtsx [Design]",
               "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx",
               "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FillStockDocumentInfo.dtsx",
@@ -54,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Pkg_FillSaleInfo.dtsx [Design]",
               "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillSaleInfo.dtsx",
               "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FillSaleInfo.dtsx",
@@ -66,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Pkg_FilltemInfo.dtsx [Design]",
               "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FilltemInfo.dtsx",
               "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FilltemInfo.dtsx",
@@ -90,19 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Pkg_FillBaseInfo.dtsx [Design]",
-              "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseInfo.dtsx",
-              "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FillBaseInfo.dtsx",
-              "ToolTip": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseInfo.dtsx [Design]",
-              "RelativeToolTip": "RainDWSSIS\\Pkg_FillBaseInfo.dtsx [Design]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2025-06-10T07:58:00.166Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Pkg_FillBaseSaleInfo.dtsx [Design]",
               "DocumentMoniker": "C:\\BI\\BiProject\\ETL\\RainSSIS\\RainDWSSIS\\Pkg_FillBaseSaleInfo.dtsx",
               "RelativeDocumentMoniker": "RainDWSSIS\\Pkg_FillBaseSaleInfo.dtsx",

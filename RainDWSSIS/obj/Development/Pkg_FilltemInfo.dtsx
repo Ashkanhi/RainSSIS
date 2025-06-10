@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FilltemInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{0C619F37-97DC-4122-8F0D-31015B574282}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{53B2AA41-6706-48A8-A3FE-E627145B0125}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -44,17 +44,17 @@ AND x.LanguageID = 314
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Seq_FilltemBaseIfno"
+      DTS:refId="Package\Seq_FilltemBaseInfo"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
       DTS:DTSID="{77fd5421-cc20-4b65-924b-d35093e95066}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Seq_FilltemBaseIfno">
+      DTS:ObjectName="Seq_FilltemBaseInfo">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Seq_FilltemBaseIfno\Execute SQL Task"
+          DTS:refId="Package\Seq_FilltemBaseInfo\Execute SQL Task"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:Disabled="True"
@@ -72,7 +72,7 @@ AND x.LanguageID = 314
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Seq_FilltemBaseIfno\FillDimDepartment"
+          DTS:refId="Package\Seq_FilltemBaseInfo\FillDimDepartment"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Fill In DimDepartment"
           DTS:DTSID="{69e49373-70ea-4db7-a436-91546615a530}"
@@ -108,7 +108,7 @@ AND x.LanguageID = 314
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Seq_FilltemBaseIfno\FillDimEtlTime"
+          DTS:refId="Package\Seq_FilltemBaseInfo\FillDimEtlTime"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{60C1A872-A3E7-4220-82B6-B6F45C275117}"
@@ -125,7 +125,7 @@ AND x.LanguageID = 314
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Seq_FilltemBaseIfno\FillDimItem"
+          DTS:refId="Package\Seq_FilltemBaseInfo\FillDimItem"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Fill Data In DimItem"
           DTS:DTSID="{3dc529d6-b72d-4176-9129-aa273fe41ec8}"
@@ -139,7 +139,7 @@ AND x.LanguageID = 314
               version="1">
               <components>
                 <component
-                  refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem"
+                  refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="Set Dsn_SetData_DimItem"
@@ -196,7 +196,7 @@ AND x.LanguageID = 314
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Connections[OleDbConnection]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Connections[OleDbConnection]"
                       connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
                       connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
                       description="The OLE DB runtime connection used to access the database."
@@ -204,122 +204,122 @@ AND x.LanguageID = 314
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[ItemID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[ItemID]"
                           cachedDataType="guid"
                           cachedName="ItemID"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]" />
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
                           cachedDataType="guid"
                           cachedName="DepartmentID"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[Name]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[Name]"
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="Name"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]" />
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[Barcode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[Barcode]"
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="Barcode"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Barcode]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Barcode]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]" />
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[ReportGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[ReportGroupID]"
                           cachedDataType="guid"
                           cachedName="ReportGroupID"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ReportGroupID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ReportGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]" />
                         <inputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[TaxGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].Columns[TaxGroupID]"
                           cachedDataType="guid"
                           cachedName="TaxGroupID"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[TaxGroupID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]" />
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[TaxGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
                           dataType="guid"
                           name="ItemID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
                           dataType="guid"
                           name="DepartmentID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           dataType="wstr"
                           length="255"
                           name="Name" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[EnglishName]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[EnglishName]"
                           dataType="wstr"
                           length="255"
                           name="EnglishName" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Barcode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[Barcode]"
                           dataType="wstr"
                           length="500"
                           name="Barcode" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ReportGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ReportGroupID]"
                           dataType="guid"
                           name="ReportGroupID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[TaxGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[TaxGroupID]"
                           dataType="guid"
                           name="TaxGroupID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DiscountGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[DiscountGroupID]"
                           dataType="guid"
                           name="DiscountGroupID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[MaterialID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[MaterialID]"
                           dataType="guid"
                           name="MaterialID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ModelID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ModelID]"
                           dataType="guid"
                           name="ModelID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ColorID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ColorID]"
                           dataType="guid"
                           name="ColorID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[SizeID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[SizeID]"
                           dataType="guid"
                           name="SizeID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[QualityID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[QualityID]"
                           dataType="guid"
                           name="QualityID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[SeasonID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[SeasonID]"
                           dataType="guid"
                           name="SeasonID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[YearID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[YearID]"
                           dataType="guid"
                           name="YearID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ParentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[ParentID]"
                           dataType="guid"
                           name="ParentID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[EtlTime]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input].ExternalColumns[EtlTime]"
                           dataType="dbTimeStamp"
                           name="EtlTime" />
                       </externalMetadataColumns>
@@ -327,22 +327,22 @@ AND x.LanguageID = 314
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -351,7 +351,7 @@ AND x.LanguageID = 314
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem"
+                  refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
                   description="Get  Src_GetData_DimItem"
@@ -400,7 +400,7 @@ AND x.LanguageID = 314
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Connections[OleDbConnection]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Connections[OleDbConnection]"
                       connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
                       connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
                       description="The OLE DB runtime connection used to access the database."
@@ -408,143 +408,143 @@ AND x.LanguageID = 314
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output]"
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]"
                           dataType="guid"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ItemID]"
                           name="ItemID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]"
                           dataType="guid"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[DepartmentID]"
                           name="DepartmentID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Name]"
                           length="255"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Name]"
                           name="Name"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Barcode]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Barcode]"
                           length="255"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[Barcode]"
                           name="Barcode"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]"
                           dataType="guid"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ReportGroupID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ReportGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[ReportGroupID]"
                           name="ReportGroupID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]"
                           dataType="guid"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[TaxGroupID]"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]"
+                          externalMetadataColumnId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[TaxGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].Columns[TaxGroupID]"
                           name="TaxGroupID"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
                           dataType="guid"
                           name="ItemID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
                           dataType="guid"
                           name="DepartmentID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Name]"
                           dataType="wstr"
                           length="255"
                           name="Name" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Barcode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[Barcode]"
                           dataType="wstr"
                           length="255"
                           name="Barcode" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ReportGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[ReportGroupID]"
                           dataType="guid"
                           name="ReportGroupID" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[TaxGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output].ExternalColumns[TaxGroupID]"
                           dataType="guid"
                           name="TaxGroupID" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output]"
+                      refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output]"
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ItemID]"
                           dataType="guid"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ItemID]"
                           name="ItemID" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
                           dataType="guid"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
                           name="DepartmentID" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Name]"
                           dataType="wstr"
                           length="255"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Name]"
                           name="Name" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Barcode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Barcode]"
                           dataType="wstr"
                           length="255"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Barcode]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[Barcode]"
                           name="Barcode" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ReportGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ReportGroupID]"
                           dataType="guid"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ReportGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ReportGroupID]"
                           name="ReportGroupID" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[TaxGroupID]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[TaxGroupID]"
                           dataType="guid"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[TaxGroupID]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[TaxGroupID]"
                           name="TaxGroupID" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -555,10 +555,10 @@ AND x.LanguageID = 314
               </components>
               <paths>
                 <path
-                  refId="Package\Seq_FilltemBaseIfno\FillDimItem.Paths[OLE DB Source Output]"
-                  endId="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]"
+                  refId="Package\Seq_FilltemBaseInfo\FillDimItem.Paths[OLE DB Source Output]"
+                  endId="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
-                  startId="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output]" />
+                  startId="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -566,29 +566,29 @@ AND x.LanguageID = 314
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{5EAFD2E3-831A-4EAD-8596-6BFC16AD3734}"
-          DTS:From="Package\Seq_FilltemBaseIfno\FillDimDepartment"
+          DTS:From="Package\Seq_FilltemBaseInfo\FillDimDepartment"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Seq_FilltemBaseIfno\FillDimItem" />
+          DTS:To="Package\Seq_FilltemBaseInfo\FillDimItem" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint 1]"
+          DTS:refId="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
           DTS:DTSID="{9A7BE613-D414-473E-A2E1-7F5332BD9860}"
-          DTS:From="Package\Seq_FilltemBaseIfno\FillDimEtlTime"
+          DTS:From="Package\Seq_FilltemBaseInfo\FillDimEtlTime"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Seq_FilltemBaseIfno\Execute SQL Task" />
+          DTS:To="Package\Seq_FilltemBaseInfo\Execute SQL Task" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint 2]"
+          DTS:refId="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
           DTS:DTSID="{EB4F750D-0CB2-4AFB-A59F-D904B56F42E1}"
-          DTS:From="Package\Seq_FilltemBaseIfno\FillDimItem"
+          DTS:From="Package\Seq_FilltemBaseInfo\FillDimItem"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Seq_FilltemBaseIfno\FillDimEtlTime" />
+          DTS:To="Package\Seq_FilltemBaseInfo\FillDimEtlTime" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -606,22 +606,22 @@ AND x.LanguageID = 314
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
-          Id="Package\Seq_FilltemBaseIfno\Execute SQL Task"
+          Id="Package\Seq_FilltemBaseInfo\Execute SQL Task"
           TopLeft="260,38" />
         <NodeLayout
           Size="166,42"
-          Id="Package\Seq_FilltemBaseIfno\FillDimDepartment"
+          Id="Package\Seq_FilltemBaseInfo\FillDimDepartment"
           TopLeft="42,28" />
         <NodeLayout
           Size="146,42"
-          Id="Package\Seq_FilltemBaseIfno\FillDimEtlTime"
+          Id="Package\Seq_FilltemBaseInfo\FillDimEtlTime"
           TopLeft="230.666666666667,179.333333333333" />
         <NodeLayout
           Size="133,42"
-          Id="Package\Seq_FilltemBaseIfno\FillDimItem"
+          Id="Package\Seq_FilltemBaseInfo\FillDimItem"
           TopLeft="35.888888888889,179.888888888889" />
         <EdgeLayout
-          Id="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint]"
+          Id="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint]"
           TopLeft="125,70">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -655,7 +655,7 @@ AND x.LanguageID = 314
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint 1]"
+          Id="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint 1]"
           TopLeft="303.666666666667,179.333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -689,7 +689,7 @@ AND x.LanguageID = 314
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Seq_FilltemBaseIfno.PrecedenceConstraints[Constraint 2]"
+          Id="Package\Seq_FilltemBaseInfo.PrecedenceConstraints[Constraint 2]"
           TopLeft="168.888888888889,200.611111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -715,26 +715,26 @@ AND x.LanguageID = 314
           IsExpanded="True"
           PanelSize="477,277"
           Size="477,320"
-          Id="Package\Seq_FilltemBaseIfno"
+          Id="Package\Seq_FilltemBaseInfo"
           TopLeft="349.277777777777,72.777777777778" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Seq_FilltemBaseIfno\FillDimItem">
+    design-time-name="Package\Seq_FilltemBaseInfo\FillDimItem">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="249,42"
-          Id="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem"
+          Id="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem"
           TopLeft="560,290" />
         <NodeLayout
           Size="250,42"
-          Id="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem"
+          Id="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem"
           TopLeft="578,151" />
         <EdgeLayout
-          Id="Package\Seq_FilltemBaseIfno\FillDimItem.Paths[OLE DB Source Output]"
+          Id="Package\Seq_FilltemBaseInfo\FillDimItem.Paths[OLE DB Source Output]"
           TopLeft="703,193">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -771,7 +771,7 @@ AND x.LanguageID = 314
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Seq_FilltemBaseIfno\FillDimItem\Dsn_SetData_DimItem">
+    design-time-name="Package\Seq_FilltemBaseInfo\FillDimItem\Dsn_SetData_DimItem">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -784,7 +784,7 @@ AND x.LanguageID = 314
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Seq_FilltemBaseIfno\FillDimItem\Src_GetData_DimItem">
+    design-time-name="Package\Seq_FilltemBaseInfo\FillDimItem\Src_GetData_DimItem">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
