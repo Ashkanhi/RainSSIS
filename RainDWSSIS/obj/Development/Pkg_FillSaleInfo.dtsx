@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{2DFFA6D6-326A-4A67-B440-80BDE8B7B798}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{1702651A-D5D0-4431-BE1D-89F539688B23}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -32,7 +32,7 @@ SELECT *
 		DECLARE @FilterRainDate DateTime ,
 				@DateNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''6/7/2025 11:49:22 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''6/8/2025 2:16:18 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 
 
@@ -92,7 +92,7 @@ AND S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250607</DTS:VariableValue>
+        DTS:DataType="3">20250608</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -124,7 +124,7 @@ AND S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''6/7/2025 11:49:22 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''6/8/2025 2:16:18 PM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -153,7 +153,7 @@ AND S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">6/7/2025 11:49:22 AM</DTS:VariableValue>
+        DTS:DataType="7">6/8/2025 2:16:18 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2151,45 +2151,43 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="173,42"
           Id="Package\Seq_FillSaleInfo\CheckCustomerExists\Src_CustomerCheck"
-          TopLeft="457,65" />
+          TopLeft="456,67" />
         <NodeLayout
           Size="113,42"
           Id="Package\Seq_FillSaleInfo\CheckCustomerExists\Lookup"
           TopLeft="496,206" />
         <EdgeLayout
           Id="Package\Seq_FillSaleInfo\CheckCustomerExists.Paths[OLE DB Source Output]"
-          TopLeft="543.5,107">
+          TopLeft="542.5,109">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9,99"
+              EndConnector="10,97"
               Start="0,0"
-              End="9,91.5">
+              End="10,89.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,44.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.5"
-                    Point2="0,49.5"
-                    Point3="4,49.5" />
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="4,48.5" />
                   <mssgle:LineSegment
-                    End="5,49.5" />
+                    End="6,48.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="5,49.5"
-                    Point2="9,49.5"
-                    Point3="9,53.5" />
+                    Point1="6,48.5"
+                    Point2="10,48.5"
+                    Point3="10,52.5" />
                   <mssgle:LineSegment
-                    End="9,91.5" />
+                    End="10,89.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
