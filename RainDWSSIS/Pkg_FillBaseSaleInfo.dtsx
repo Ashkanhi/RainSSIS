@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillBaseSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{6E3172C1-104F-4AEE-8C46-068A2AF2A785}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{22755E2B-87D4-4D69-9F9A-40D718FDE9D9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -42,6 +42,48 @@ SELECT	  SupplierID
 FROM [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].SupplierView X
 WHERE NOT EXISTS (SELECT * FROM dbo.DimSupplier WHERE SupplierID = X.SupplierID)
 AND LanguageID = 314
+</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BE0943A8-39E9-4C1F-A510-DA2CF40636B9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&#xA; SELECT *&#xA;&#x9;&#x9;&#xA;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#xA;&#x9;&#x9;'DECLARE @FilterRainDate DateTime ,&#xA;&#x9;  @DateNow DATETIME &#xA;&#xA;&#x9;&#x9;&#xA;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#xA;&#x9;&#x9;&#xA;&#x9;SELECT&#xA;&#x9; SILI.ItemID &#xA;&#x9;&#xA;&#x9;FROM  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SaleInvoiceLineItem SILI WITH(NOLOCK)&#x9; &#xA;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;GROUP BY SILI.ItemID&#xA;&#x9;&#xA;&#x9;')&#xA;&#xA;&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VR_FillBaseSaleInfo_CheckItemExists">
+      <DTS:VariableValue
+        DTS:DataType="8">
+ SELECT *
+		
+	FROM OPENQUERY( [10.15.20.229\RWP_2022] , 
+		
+		
+	
+		'DECLARE @FilterRainDate DateTime ,
+	  @DateNow DATETIME 
+
+		
+
+		
+		
+		SET @DateNow = GETDATE()
+
+		
+		
+
+		
+	SELECT
+	 SILI.ItemID 
+	
+	FROM  [RWP_Sale_DB_Bakhshi].[dbo].SaleInvoiceLineItem SILI WITH(NOLOCK)	 
+	
+		
+	GROUP BY SILI.ItemID
+	
+	')
+
+
 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
@@ -76,6 +118,413 @@ AND LanguageID = 314
       DTS:ObjectName="Seq_FillBaseInfoSale">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Seq_FillBaseInfoSale\CheckItemExists"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5C837E09-8F08-42ED-AB8D-694B1FD6D16A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CheckItemExists"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimItem]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimItem]) [refTable]
+where [refTable].[ItemID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ItemID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartmentID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishName" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Barcode" dataType="DT_WSTR" length="500" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportGroupID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TaxGroupID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DiscountGroupID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaterialID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModelID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ColorID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SizeID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QualityID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SeasonID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ParentID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EtlTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].Columns[ItemID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input].Columns[ItemID]"
+                          cachedDataType="guid"
+                          cachedName="ItemID"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].Columns[ItemID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ItemID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Match Output].Columns[ItemID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Match Output].Columns[ItemID]"
+                          name="ItemID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ItemID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLBC_CheckItemExists"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Usp_CheckItemExists ? </property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Connections[OleDbConnection]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input].Columns[ItemID]"
+                          cachedDataType="guid"
+                          cachedName="ItemID"
+                          externalMetadataColumnId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input].ExternalColumns[@ItemID]"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input].ExternalColumns[@ItemID]"
+                          dataType="guid"
+                          name="@ItemID">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::VR_FillBaseSaleInfo_CheckItemExists</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          name="ItemID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          dataType="guid"
+                          name="ItemID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          dataType="guid"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          name="ItemID" />
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Seq_FillBaseInfoSale\CheckItemExists.Paths[Lookup No Match Output]"
+                  endId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists.Inputs[OLE DB Command Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Seq_FillBaseInfoSale\CheckItemExists.Paths[OLE DB Source Output]"
+                  endId="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Seq_FillBaseInfoSale\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{7a9a1548-72d2-41a8-9c82-03ad988575ec}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
+              SQLTask:SqlStatementSource="SELECT  *   FROM table_that_does_not_exist" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Seq_FillBaseInfoSale\FillDimReason"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -624,6 +1073,22 @@ AND LanguageID = 314
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Seq_FillBaseInfoSale\FillDimSupplier" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{3801E8ED-7020-4B01-9D1C-6BD2FCD4A169}"
+          DTS:From="Package\Seq_FillBaseInfoSale\FillDimSupplier"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Seq_FillBaseInfoSale\CheckItemExists" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{3C64B2AC-E062-4A25-9113-E12C95CC6B69}"
+          DTS:From="Package\Seq_FillBaseInfoSale\CheckItemExists"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Seq_FillBaseInfoSale\Execute SQL Task" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -661,22 +1126,30 @@ AND LanguageID = 314
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists"
+          TopLeft="69,340" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Seq_FillBaseInfoSale\Execute SQL Task"
+          TopLeft="76,440.666666666667" />
         <NodeLayout
           Size="145,42"
           Id="Package\Seq_FillBaseInfoSale\FillDimReason"
-          TopLeft="193,119" />
+          TopLeft="73,125" />
         <NodeLayout
           Size="136,42"
           Id="Package\Seq_FillBaseInfoSale\FillDimStock"
-          TopLeft="207,24.5" />
+          TopLeft="87,30.5" />
         <NodeLayout
           Size="149,42"
           Id="Package\Seq_FillBaseInfoSale\FillDimSupplier"
-          TopLeft="193,212" />
+          TopLeft="73,218" />
         <EdgeLayout
           Id="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint]"
-          TopLeft="275,66.5">
+          TopLeft="155,72.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -710,7 +1183,7 @@ AND LanguageID = 314
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint 1]"
-          TopLeft="266.5,161">
+          TopLeft="146.5,167">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -730,21 +1203,174 @@ AND LanguageID = 314
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint 2]"
+          TopLeft="150.25,260">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillBaseInfoSale.PrecedenceConstraints[Constraint 3]"
+          TopLeft="155.25,382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.6666666666667"
+              Start="0,0"
+              End="0,51.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="483,334"
-          Size="483,377"
+          PanelSize="321,538"
+          Size="321,581"
           Id="Package\Seq_FillBaseInfoSale"
-          TopLeft="283,42" />
+          TopLeft="444,43" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Seq_FillBaseInfoSale\CheckItemExists">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists\OLBC_CheckItemExists"
+          TopLeft="521,393" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source"
+          TopLeft="524,109" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup"
+          TopLeft="539,228" />
+        <EdgeLayout
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists.Paths[OLE DB Source Output]"
+          TopLeft="597.25,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillBaseInfoSale\CheckItemExists.Paths[Lookup No Match Output]"
+          TopLeft="595.5,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19,123"
+              Start="0,0"
+              End="19,115.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.5"
+                    Point2="0,61.5"
+                    Point3="4,61.5" />
+                  <mssgle:LineSegment
+                    End="15,61.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,61.5"
+                    Point2="19,61.5"
+                    Point3="19,65.5" />
+                  <mssgle:LineSegment
+                    End="19,115.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-46.30638671875,66.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillBaseInfoSale\CheckItemExists\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillBaseInfoSale\CheckItemExists\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimItem]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Seq_FillBaseInfoSale\FillDimSupplier">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="214,47"
           Id="Package\Seq_FillBaseInfoSale\FillDimSupplier\Dsn_SetData_DimSupplier"
@@ -772,7 +1398,9 @@ AND LanguageID = 314
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

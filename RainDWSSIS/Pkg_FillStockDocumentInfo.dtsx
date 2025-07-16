@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillStockDocumentInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{1B560F76-8947-46CD-B794-44BABAC3150A}">
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{AD9876F7-A065-4583-A9C3-0E117A106E54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -20,7 +20,7 @@
       DTS:CreationName=""
       DTS:DTSID="{CD2AED95-C566-493E-9D48-5A1756BE2B6A}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow DATETIME ;&#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) ;&#xA;&#x9;&#x9;SET @DateNow = GETDATE();&#xA; &#xA;   &#xA;&#xA;&#x9;SELECT&#x9; CompanyID =  1&#xA;&#x9;&#x9;&#x9;, D.BookerStoreID&#xA;&#x9;&#x9;&#x9;, D.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;, D.DocumentID&#xA;&#x9;&#x9;&#x9;, DI.LineItemID&#xA;&#x9;&#x9;&#x9;, D.DocumentTypeID&#xA;&#x9;&#x9;&#x9;, DocumentDate = CAST(REPLACE(CAST(CAST(D.DocumentDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#x9;&#x9;&#x9;, FinanceApprove&#xA;&#x9;&#x9;&#x9;, D.StatusID&#xA;&#x9;&#x9;&#x9;, SourceStoreID&#xA;&#x9;&#x9;&#x9;, SourceStockID&#xA;&#x9;&#x9;&#x9;, TargetStoreID&#xA;&#x9;&#x9;&#x9;, TargetStockID&#xA;&#x9;&#x9;&#x9;, D.SupplierID&#xA;&#x9;&#x9;&#x9;, ThirdPartyID&#xA;&#x9;&#x9;&#x9;, ItemID&#xA;&#x9;&#x9;&#x9;, ReasonID&#xA;&#x9;&#x9;&#x9;, DepartmentID&#xA;&#x9;&#x9;&#x9;, UsageTypeID&#xA;&#x9;&#x9;&#x9;, LastUnitCount&#xA;&#x9;&#x9;&#x9;, ScannedCount&#xA;&#x9;&#x9;&#x9;, PackUnitCount&#xA;&#x9;&#x9;&#x9;, PackCount&#xA;&#x9;&#x9;&#x9;, UnitCount&#xA;&#x9;&#x9;&#x9;, DamagedCount&#xA;&#x9;&#x9;&#x9;, BonusCount&#xA;&#x9;&#x9;&#x9;, RemindCount&#xA;&#x9;&#x9;&#x9;, Cost&#xA;&#x9;&#x9;&#x9;, DI.Discount&#xA;&#x9;&#x9;&#x9;, SupplierDiscount&#xA;&#x9;&#x9;&#x9;, Tax&#xA;&#x9;&#x9;&#x9;, Toll&#xA;&#x9;&#x9;&#x9;, PositiveCost&#xA;&#x9;&#x9;&#x9;, NegativeCost&#xA;&#x9;&#x9;&#x9;, NetCost&#xA;&#x9;&#x9;&#x9;, SalePrice&#xA;&#x9;&#x9;&#x9;, SC.ContractID&#xA;&#x9;&#x9;&#x9;, SC.ContractTypeID&#xA;&#x9;&#x9;&#x9;, Count1&#xA;&#x9;&#x9;&#x9;, Count2&#xA;&#x9;&#x9;&#x9;, Discount1&#xA;&#x9;&#x9;&#x9;, Discount2&#xA;&#x9;&#x9;&#x9;, Discount3&#xA;&#x9;&#x9;&#x9;, Discount4&#xA;&#x9;&#x9;&#x9;, Discount5&#xA;&#x9;&#x9;&#x9;, EtlTime =@DateNow&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#xA;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentView D WITH(NOLOCK)&#xA;&#x9;&#x9;INNER JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON D.BookerStoreID = DI.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND D.BookerWorkstationID = DI.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND D.DocumentID = DI.DocumentID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemContract DIC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DIC.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DIC.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DIC.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DIC.LineItemID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract SC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DIC.ContractID = SC.ContractID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemCustomDiscount DID WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DID.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DID.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DID.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DID.LineItemID&#xA;&#x9;WHERE D.StatusID = 246&#xA;&#x9;AND D.DocumentLanguage = 314&#xA;&#xA;&#x9;AND D.DocumentDate &gt; @FilterRainDate')&quot;"
+      DTS:Expression="&quot;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow DATETIME ;&#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) ;&#xA;&#x9;&#x9;SET @DateNow = GETDATE();&#xA; &#xA;   &#xA;&#xA;&#x9;SELECT&#x9; CompanyID =  1&#xA;&#x9;&#x9;&#x9;, D.BookerStoreID&#xA;&#x9;&#x9;&#x9;, D.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;, D.DocumentID&#xA;&#x9;&#x9;&#x9;, DI.LineItemID&#xA;&#x9;&#x9;&#x9;, D.DocumentTypeID&#xA;&#x9;&#x9;&#x9;, DocumentDate = CAST(REPLACE(CAST(CAST(D.DocumentDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#x9;&#x9;&#x9;, FinanceApprove&#xA;&#x9;&#x9;&#x9;, D.StatusID&#xA;&#x9;&#x9;&#x9;, SourceStoreID&#xA;&#x9;&#x9;&#x9;, SourceStockID&#xA;&#x9;&#x9;&#x9;, TargetStoreID&#xA;&#x9;&#x9;&#x9;, TargetStockID&#xA;&#x9;&#x9;&#x9;, D.SupplierID&#xA;&#x9;&#x9;&#x9;, ThirdPartyID&#xA;&#x9;&#x9;&#x9;, ItemID&#xA;&#x9;&#x9;&#x9;, ReasonID&#xA;&#x9;&#x9;&#x9;, DepartmentID&#xA;&#x9;&#x9;&#x9;, UsageTypeID&#xA;&#x9;&#x9;&#x9;, LastUnitCount&#xA;&#x9;&#x9;&#x9;--, ScannedCount&#xA;&#x9;&#x9;&#x9;, PackUnitCount&#xA;&#x9;&#x9;&#x9;, PackCount&#xA;&#x9;&#x9;&#x9;, UnitCount&#xA;&#x9;&#x9;&#x9;, DamagedCount&#xA;&#x9;&#x9;&#x9;, BonusCount&#xA;&#x9;&#x9;&#x9;, RemindCount&#xA;&#x9;&#x9;&#x9;, Cost&#xA;&#x9;&#x9;&#x9;, DI.Discount&#xA;&#x9;&#x9;&#x9;, SupplierDiscount&#xA;&#x9;&#x9;&#x9;, Tax&#xA;&#x9;&#x9;&#x9;, Toll&#xA;&#x9;&#x9;&#x9;, PositiveCost&#xA;&#x9;&#x9;&#x9;, NegativeCost&#xA;&#x9;&#x9;&#x9;, NetCost&#xA;&#x9;&#x9;&#x9;, SalePrice&#xA;&#x9;&#x9;&#x9;, SC.ContractID&#xA;&#x9;&#x9;&#x9;, SC.ContractTypeID&#xA;&#x9;&#x9;&#x9;--, Count1&#xA;&#x9;&#x9;&#x9;--, Count2&#xA;&#x9;&#x9;&#x9;, Discount1&#xA;&#x9;&#x9;&#x9;, Discount2&#xA;&#x9;&#x9;&#x9;, Discount3&#xA;&#x9;&#x9;&#x9;, Discount4&#xA;&#x9;&#x9;&#x9;, Discount5&#xA;&#x9;&#x9;&#x9;, EtlTime =@DateNow&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#xA;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentView D WITH(NOLOCK)&#xA;&#x9;&#x9;INNER JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON D.BookerStoreID = DI.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND D.BookerWorkstationID = DI.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND D.DocumentID = DI.DocumentID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemContract DIC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DIC.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DIC.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DIC.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DIC.LineItemID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract SC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DIC.ContractID = SC.ContractID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemCustomDiscount DID WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DID.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DID.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DID.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DID.LineItemID&#xA;&#x9;WHERE D.StatusID = 246&#xA;&#x9;AND D.DocumentLanguage = 314&#xA;&#xA;&#x9;AND   CAST ( D.DocumentDate AS DATE  ) &gt; @FilterRainDate')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DT_SourceFillFactStockDocumentInfo">
@@ -32,7 +32,7 @@ SELECT *
 		DECLARE @FilterRainDate DateTime ,
 				@DateNow DATETIME ;
 
-		SET @FilterRainDate =  CAST( ''6/7/2025 10:07:48 AM''  AS DATE) ;
+		SET @FilterRainDate =  CAST( ''7/13/2025 10:20:50 AM''  AS DATE) ;
 		SET @DateNow = GETDATE();
  
    
@@ -57,7 +57,7 @@ SELECT *
 			, DepartmentID
 			, UsageTypeID
 			, LastUnitCount
-			, ScannedCount
+			--, ScannedCount
 			, PackUnitCount
 			, PackCount
 			, UnitCount
@@ -75,8 +75,8 @@ SELECT *
 			, SalePrice
 			, SC.ContractID
 			, SC.ContractTypeID
-			, Count1
-			, Count2
+			--, Count1
+			--, Count2
 			, Discount1
 			, Discount2
 			, Discount3
@@ -107,7 +107,7 @@ SELECT *
 	WHERE D.StatusID = 246
 	AND D.DocumentLanguage = 314
 
-	AND D.DocumentDate &gt; @FilterRainDate')</DTS:VariableValue>
+	AND   CAST ( D.DocumentDate AS DATE  ) &gt; @FilterRainDate')</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -118,7 +118,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250607</DTS:VariableValue>
+        DTS:DataType="3">20250713</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -129,7 +129,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">6/7/2025 10:07:48 AM</DTS:VariableValue>
+        DTS:DataType="7">7/13/2025 10:20:50 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1251,17 +1251,6 @@ SELECT *
                           scale="9"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[ScannedCount]"
-                          dataType="numeric"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[ScannedCount]"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[ScannedCount]"
-                          name="ScannedCount"
-                          precision="38"
-                          scale="9"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[PackUnitCount]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
@@ -1445,28 +1434,6 @@ SELECT *
                           name="ContractTypeID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[Count1]"
-                          dataType="numeric"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[Count1]"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[Count1]"
-                          name="Count1"
-                          precision="38"
-                          scale="9"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[Count2]"
-                          dataType="numeric"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[Count2]"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[Count2]"
-                          name="Count2"
-                          precision="38"
-                          scale="9"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[Discount1]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
@@ -1616,12 +1583,6 @@ SELECT *
                           precision="38"
                           scale="9" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[ScannedCount]"
-                          dataType="numeric"
-                          name="ScannedCount"
-                          precision="38"
-                          scale="9" />
-                        <externalMetadataColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[PackUnitCount]"
                           dataType="numeric"
                           name="PackUnitCount"
@@ -1719,18 +1680,6 @@ SELECT *
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[ContractTypeID]"
                           dataType="i4"
                           name="ContractTypeID" />
-                        <externalMetadataColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[Count1]"
-                          dataType="numeric"
-                          name="Count1"
-                          precision="38"
-                          scale="9" />
-                        <externalMetadataColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[Count2]"
-                          dataType="numeric"
-                          name="Count2"
-                          precision="38"
-                          scale="9" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[Discount1]"
                           dataType="numeric"
@@ -1875,13 +1824,6 @@ SELECT *
                           precision="38"
                           scale="9" />
                         <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[ScannedCount]"
-                          dataType="numeric"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[ScannedCount]"
-                          name="ScannedCount"
-                          precision="38"
-                          scale="9" />
-                        <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[PackUnitCount]"
                           dataType="numeric"
                           lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[PackUnitCount]"
@@ -1996,20 +1938,6 @@ SELECT *
                           dataType="i4"
                           lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[ContractTypeID]"
                           name="ContractTypeID" />
-                        <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[Count1]"
-                          dataType="numeric"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[Count1]"
-                          name="Count1"
-                          precision="38"
-                          scale="9" />
-                        <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[Count2]"
-                          dataType="numeric"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[Count2]"
-                          name="Count2"
-                          precision="38"
-                          scale="9" />
                         <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[Discount1]"
                           dataType="numeric"

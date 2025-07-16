@@ -1,432 +1,324 @@
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:38
+DateTime      : 2025-07-16 11:33:53
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
+DateTime      : 2025-07-16 11:33:53
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Success DimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimRepository
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimStore
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimDictionary
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimEmployee
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
+DateTime      : 2025-07-16 11:33:53
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimUser
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:39
+DateTime      : 2025-07-16 11:33:53
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimStore
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 11:33:53
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimRepository
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 11:33:53
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEmployee
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 11:33:53
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimDictionary
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 11:33:53
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimTender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:45
+DateTime      : 2025-07-16 11:33:56
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCalender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:45
+DateTime      : 2025-07-16 11:33:56
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimWorkstation
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:45
+DateTime      : 2025-07-16 11:33:56
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimEtlTime
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:37:45
+DateTime      : 2025-07-16 11:33:56
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Seq_FillBaseDimension
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3114E7B3-61FE-424D-9B56-2A697598BF43}
+Execution ID  : {B2A598FE-9B6A-4DD0-A80F-CF0705E13471}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
+DateTime      : 2025-07-16 14:48:28
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
+DateTime      : 2025-07-16 14:48:28
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Success DimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimEmployee
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimStore
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimRepository
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimUser
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
+DateTime      : 2025-07-16 14:48:28
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimDictionary
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:48
+DateTime      : 2025-07-16 14:48:28
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimStore
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 14:48:28
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimUser
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 14:48:28
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimRepository
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 14:48:28
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEmployee
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 14:48:28
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimTender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:50
+DateTime      : 2025-07-16 14:48:30
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCalender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:50
+DateTime      : 2025-07-16 14:48:31
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimWorkstation
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:50
+DateTime      : 2025-07-16 14:48:31
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimEtlTime
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:46:50
+DateTime      : 2025-07-16 14:48:31
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Seq_FillBaseDimension
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {72D7B1A1-C196-4D5C-9149-1ED51F932512}
+Execution ID  : {78D69401-C30A-49B2-8C22-CD921B30A51E}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:56:21
+DateTime      : 2025-07-16 17:39:25
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
+DateTime      : 2025-07-16 17:39:25
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Success DimCompany
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimStore
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimDictionary
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
+DateTime      : 2025-07-16 17:39:25
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimRepository
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimEmployee
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimUser
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:22
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimTender
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:24
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimCalender
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:24
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimWorkstation
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:24
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimEtlTime
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 11:56:24
-Package Name  : Pkg_FillBaseInfo
-Source Task   : Seq_FillBaseDimension
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {3F9E5B23-6141-4B8B-9856-39FCE0F2C912}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimCompany
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : Success DimCompany
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimStore
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimEmployee
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimRepository
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
-Package Name  : Pkg_FillBaseInfo
-Source Task   : FillDimUser
-Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
-Status        : Success
---------------------------------------------------
-
---------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
+DateTime      : 2025-07-16 17:39:25
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimDictionary
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 13:11:07
+DateTime      : 2025-07-16 17:39:25
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimUser
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 17:39:25
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimStore
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 17:39:25
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimTender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 13:11:09
+DateTime      : 2025-07-16 17:39:25
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEmployee
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-16 17:39:27
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimCalender
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 13:11:09
+DateTime      : 2025-07-16 17:39:27
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimWorkstation
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 13:11:09
+DateTime      : 2025-07-16 17:39:27
 Package Name  : Pkg_FillBaseInfo
 Source Task   : FillDimEtlTime
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
 --------------------------------------------------
-DateTime      : 2025-06-10 13:11:09
+DateTime      : 2025-07-16 17:39:27
 Package Name  : Pkg_FillBaseInfo
 Source Task   : Seq_FillBaseDimension
 Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
-Execution ID  : {AD83A7D3-4807-4451-8F6D-4A7363CE6D68}
+Execution ID  : {668AB310-276C-4F0B-8726-A4C715EBBB53}
 Status        : Success
 --------------------------------------------------
 
