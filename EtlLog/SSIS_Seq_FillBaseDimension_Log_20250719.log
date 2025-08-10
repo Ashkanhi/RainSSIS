@@ -1,0 +1,108 @@
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimCompany
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Success DimCompany
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimRepository
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimDictionary
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimStore
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimUser
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimTender
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:36
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEmployee
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:39
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimCalender
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:39
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimWorkstation
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:39
+Package Name  : Pkg_FillBaseInfo
+Source Task   : FillDimEtlTime
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+
+--------------------------------------------------
+DateTime      : 2025-07-19 13:00:39
+Package Name  : Pkg_FillBaseInfo
+Source Task   : Seq_FillBaseDimension
+Script Task   : Pkg_Seq_FillBaseDimension_PostExecute
+Execution ID  : {DCE67B64-9E5F-45F0-89E5-202084E88C44}
+Status        : Success
+--------------------------------------------------
+

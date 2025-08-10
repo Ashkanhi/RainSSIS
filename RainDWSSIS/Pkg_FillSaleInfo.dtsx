@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{3A2C6A9A-C866-4538-928F-CBBDFCFA63CF}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{C90289BC-E4B6-4DA1-A4A7-54AB6254057C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -20,7 +20,7 @@
       DTS:CreationName=""
       DTS:DTSID="{EFEAF724-7B95-498F-9552-D9A51419B3A6}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;&#x9;&#x9;&#x9;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow DATETIME &#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) &#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#xA;&#xA;&#x9;SELECT  &#xA;&#x9;&#x9;&#x9;CompanyID =  1, S.BookerStoreID, S.BookerWorkstationID, S.InvoiceID, SI.LineItemID, &#xA;&#x9;&#x9;InvoiceDate = CAST(REPLACE(CAST(CAST(S.InvoiceDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT),&#xA;&#x9;&#x9;  BusinessDate =  CAST(REPLACE(CAST(CAST(ISNULL(S.BusinessDate, S.InvoiceDate) AS DATE) AS NVARCHAR), ''-'', '''') AS INT),&#x9;&#xA;&#x9;&#x9;GroupID = CCA.CustomerGroupID&#xA;&#x9;&#x9;, S.CustomerID , C.SupplierID, C.ContractTypeID , S.StockID, &#xA;&#x9;&#x9;SI.ItemID, SI.ReasonID, S.InvoiceTypeID, SI.TypeID,&#xA;&#x9;&#x9;SI.Quantity, SI.BonusQuantity,  Amount =  (SI.Quantity + SI.BonusQuantity) * SI.PriceAmount,&#xA;&#x9;&#x9;SI.DiscountAmount, SI.ManualDiscount, SI.InvoiceDiscount,&#xA;&#x9;&#x9;SI.DiscountPercent, SI.ManualDiscountPercent, SI.InvoiceDiscountPercent,&#xA;&#x9;&#x9;SI.TaxAmount, SI.TollAmount,Comission =  NULL, &#xA;&#x9;&#x9;SI.RoundAmount,&#xA; &#x9;&#x9;NetAmount = CASE WHEN ISNULL(SI.IsPriceWithTax, 0) = 1 THEN &#xA;&#x9;&#x9;&#x9;&#x9;((SI.Quantity + SI.BonusQuantity) * SI.PriceAmount) - ISNULL(SI.DiscountAmount, 0) - ISNULL(SI.InvoiceDiscount, 0) - ISNULL(SI.ManualDiscount, 0) - ISNULL(SI.RoundAmount, 0) - ISNULL(SI.TaxAmount, 0) - ISNULL(SI.TollAmount, 0)&#xA;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;((SI.Quantity + SI.BonusQuantity) * SI.PriceAmount) - ISNULL(SI.DiscountAmount, 0) - ISNULL(SI.InvoiceDiscount, 0) - ISNULL(SI.ManualDiscount, 0) - ISNULL(SI.RoundAmount, 0)&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;NetCost = 0&#xA;&#x9;&#x9;, SI.IsPriceWithTax&#xA;&#x9;&#x9;, EtlTime =@DateNow&#xA;&#xA;&#x9;FROM  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SaleInvoice S WITH(NOLOCK)&#xA;&#x9;INNER JOIN   &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SaleInvoiceLineItem SI WITH(NOLOCK)&#xA;&#x9;&#x9;ON S.BookerStoreID = SI.BookerStoreID AND &#xA;&#x9;&#x9;S.BookerWorkstationID = SI.BookerWorkstationID AND &#xA;&#x9;&#x9;S.InvoiceID = SI.InvoiceID&#xA;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].CustomerGroupAssignment CCA&#xA;&#x9;&#x9;ON CCA.CustomerID = S.CustomerID &#x9;&#x9;&#xA;&#x9;&#x9;AND  CCA.TypeID = 1 &#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StoreDailyTurnOver D WITH(NOLOCK)&#xA;&#x9;&#x9;ON S.BookerStoreID = D.StoreID&#xA;&#x9;&#x9;AND S.BusinessDate&#x9;= D.BusinessDay&#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StoreDailyTurnOverLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;ON D.ID = DI.ID&#xA;&#x9;&#x9;AND SI.ItemID = DI.ItemID&#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract C WITH(NOLOCK)&#xA;&#x9;&#x9;ON DI.ContractID = C.ContractID&#xA;&#x9;&#xA;&#x9;--LEFT JOIN FactSaleReturn FR &#xA;&#x9;--&#x9;ON FR.InvoiceID = SI.InvoiceID &#xA;&#x9;--&#x9;AND FR.LineItemID = SI.LineItemID&#xA;&#xA;WHERE S.InvoiceTypeID IS NULL&#xA;AND S.BusinessDate &gt; @FilterRainDate&#xA;')&#xA;&quot;"
+      DTS:Expression="&quot;&#x9;&#x9;&#x9;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow    DATETIME , &#xA;&#x9;&#x9;&#x9;&#x9;@DateDayNow DATETIME &#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) &#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#x9;&#x9;SET @DateDayNow = CAST ( GETDATE() AS DATE )&#xA;&#xA;&#x9;SELECT  &#xA;&#x9;&#x9;&#x9;CompanyID =  1, S.BookerStoreID, S.BookerWorkstationID, S.InvoiceID, SI.LineItemID, &#xA;&#x9;&#x9;InvoiceDate = CAST(REPLACE(CAST(CAST(S.InvoiceDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT),&#xA;&#x9;&#x9;  BusinessDate =  CAST(REPLACE(CAST(CAST(ISNULL(S.BusinessDate, S.InvoiceDate) AS DATE) AS NVARCHAR), ''-'', '''') AS INT),&#x9;&#xA;&#x9;&#x9;GroupID = CCA.CustomerGroupID&#xA;&#x9;&#x9;, S.CustomerID , C.SupplierID, C.ContractTypeID , S.StockID, &#xA;&#x9;&#x9;SI.ItemID, SI.ReasonID, S.InvoiceTypeID, SI.TypeID,&#xA;&#x9;&#x9;SI.Quantity, SI.BonusQuantity,  Amount =  (SI.Quantity + SI.BonusQuantity) * SI.PriceAmount,&#xA;&#x9;&#x9;SI.DiscountAmount, SI.ManualDiscount, SI.InvoiceDiscount,&#xA;&#x9;&#x9;SI.DiscountPercent, SI.ManualDiscountPercent, SI.InvoiceDiscountPercent,&#xA;&#x9;&#x9;SI.TaxAmount, SI.TollAmount,Comission =  NULL, &#xA;&#x9;&#x9;SI.RoundAmount,&#xA; &#x9;&#x9;NetAmount = CASE WHEN ISNULL(SI.IsPriceWithTax, 0) = 1 THEN &#xA;&#x9;&#x9;&#x9;&#x9;((SI.Quantity + SI.BonusQuantity) * SI.PriceAmount) - ISNULL(SI.DiscountAmount, 0) - ISNULL(SI.InvoiceDiscount, 0) - ISNULL(SI.ManualDiscount, 0) - ISNULL(SI.RoundAmount, 0) - ISNULL(SI.TaxAmount, 0) - ISNULL(SI.TollAmount, 0)&#xA;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;((SI.Quantity + SI.BonusQuantity) * SI.PriceAmount) - ISNULL(SI.DiscountAmount, 0) - ISNULL(SI.InvoiceDiscount, 0) - ISNULL(SI.ManualDiscount, 0) - ISNULL(SI.RoundAmount, 0)&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;NetCost = 0&#xA;&#x9;&#x9;, SI.IsPriceWithTax&#xA;&#x9;&#x9;, EtlTime =@DateNow&#xA;&#xA;&#x9;FROM  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SaleInvoice S WITH(NOLOCK)&#xA;&#x9;INNER JOIN   &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SaleInvoiceLineItem SI WITH(NOLOCK)&#xA;&#x9;&#x9;ON S.BookerStoreID = SI.BookerStoreID AND &#xA;&#x9;&#x9;S.BookerWorkstationID = SI.BookerWorkstationID AND &#xA;&#x9;&#x9;S.InvoiceID = SI.InvoiceID&#xA;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].CustomerGroupAssignment CCA&#xA;&#x9;&#x9;ON CCA.CustomerID = S.CustomerID &#x9;&#x9;&#xA;&#x9;&#x9;AND  CCA.TypeID = 1 &#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StoreDailyTurnOver D WITH(NOLOCK)&#xA;&#x9;&#x9;ON S.BookerStoreID = D.StoreID&#xA;&#x9;&#x9;AND S.BusinessDate&#x9;= D.BusinessDay&#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StoreDailyTurnOverLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;ON D.ID = DI.ID&#xA;&#x9;&#x9;AND SI.ItemID = DI.ItemID&#xA;&#x9;LEFT JOIN  &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract C WITH(NOLOCK)&#xA;&#x9;&#x9;ON DI.ContractID = C.ContractID&#xA;&#x9;&#xA;&#x9;--LEFT JOIN FactSaleReturn FR &#xA;&#x9;--&#x9;ON FR.InvoiceID = SI.InvoiceID &#xA;&#x9;--&#x9;AND FR.LineItemID = SI.LineItemID&#xA;&#xA;WHERE S.InvoiceTypeID IS NULL&#xA;AND ( S.BusinessDate &gt; @FilterRainDate&#xA;&#x9;&#x9;AND S.BusinessDate &lt; @DateDayNow&#xA;&#x9;&#x9;)&#xA;')&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DT_SourceFillFactSaleReturnInfo">
@@ -30,11 +30,12 @@ SELECT *
 		FROM OPENQUERY( [10.15.20.229\RWP_2022] , 
 		' 
 		DECLARE @FilterRainDate DateTime ,
-				@DateNow DATETIME 
+				@DateNow    DATETIME , 
+				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''7/13/2025 5:45:36 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''8/7/2025 11:12:06 AM''  AS DATE) 
 		SET @DateNow = GETDATE()
-
+		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
 	SELECT  
 			CompanyID =  1, S.BookerStoreID, S.BookerWorkstationID, S.InvoiceID, SI.LineItemID, 
@@ -79,7 +80,9 @@ SELECT *
 	--	AND FR.LineItemID = SI.LineItemID
 
 WHERE S.InvoiceTypeID IS NULL
-AND S.BusinessDate &gt; @FilterRainDate
+AND ( S.BusinessDate &gt; @FilterRainDate
+		AND S.BusinessDate &lt; @DateDayNow
+		)
 ')
 </DTS:VariableValue>
     </DTS:Variable>
@@ -92,7 +95,7 @@ AND S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250713</DTS:VariableValue>
+        DTS:DataType="3">20250807</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -124,7 +127,7 @@ AND S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''7/13/2025 5:45:36 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''8/7/2025 11:12:06 AM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -153,7 +156,7 @@ AND S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">7/13/2025 5:45:36 PM</DTS:VariableValue>
+        DTS:DataType="7">8/7/2025 11:12:06 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2175,9 +2178,7 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2246,7 +2247,7 @@ where [refTable].[CustomerID] = ?</property>
     design-time-name="Package\Seq_FillSaleInfo\FillDimSaleReturn">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="214,42"
           Id="Package\Seq_FillSaleInfo\FillDimSaleReturn\Src_GetData_FactSaleReturn"
@@ -2286,9 +2287,7 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
