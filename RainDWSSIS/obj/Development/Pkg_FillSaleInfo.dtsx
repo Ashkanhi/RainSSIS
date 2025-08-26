@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{C90289BC-E4B6-4DA1-A4A7-54AB6254057C}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{30A67EB7-83AC-4EBD-A507-A0E1060B83EB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -33,7 +33,7 @@ SELECT *
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''8/7/2025 11:12:07 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''8/23/2025 5:46:43 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -95,7 +95,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250807</DTS:VariableValue>
+        DTS:DataType="3">20250823</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -127,7 +127,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''8/7/2025 11:12:07 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''8/23/2025 5:46:43 PM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -156,7 +156,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">8/7/2025 11:12:07 AM</DTS:VariableValue>
+        DTS:DataType="7">8/23/2025 5:46:43 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2178,7 +2178,9 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

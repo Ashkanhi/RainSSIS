@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_RainProcess"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{15B90DAC-5924-42CE-8CA7-91180A4CED65}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{495CCE07-216A-40CF-8ECE-DE9C5DD9C409}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -105,7 +105,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
-              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '1.0.0.1'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '1.0.0.2'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -161,6 +161,10 @@
           Size="153,42"
           Id="Package\Seq_Proccess\ProccessAllTask"
           TopLeft="126.75,19" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Seq_Proccess\WarehouseConfiguration"
+          TopLeft="47,244" />
         <EdgeLayout
           Id="Package\Seq_Proccess.PrecedenceConstraints[Constraint]"
           TopLeft="203.25,61">
@@ -229,10 +233,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Seq_Proccess\WarehouseConfiguration"
-          TopLeft="47,244" />
         <EdgeLayout
           Id="Package\Seq_Proccess.PrecedenceConstraints[Constraint 2]"
           TopLeft="172,192">
