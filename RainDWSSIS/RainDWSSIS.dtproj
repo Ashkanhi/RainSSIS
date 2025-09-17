@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DASHBOARD</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtlbMbGb1a0iFwfmZg8tWggAAAAACAAAAAAADZgAAwAAAABAAAACRCvR0tNw5l0qx0U2SJsbBAAAAAASAAACgAAAAEAAAAMH8qR51fZQm5+JN78VzK3mIAAAANqOZQ7yILSKjZpO6dk7yzRb9PMr8f64LQwpauamP44Azzg9V8Rd5X3Kk4B00exiLKQu2P+xAewXmcH/fmi+X07UgPl820LynOCwUxlQnoNkccvW9Hz83Md58ineAVxlqAnrUwokT1dKzzff7Hys8mNxnfWd9Io+yBJ/HRTzTZR9AikjU7KNpDRQAAAABJAnBHUAj0T0f3xZHhoklYp1KNQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgh94ktWhHUOSicVoDy+lkQAAAAACAAAAAAADZgAAwAAAABAAAAABvG9Z/owsXmwWFRu0uScAAAAAAASAAACgAAAAEAAAAIt66PWUU34SVNh+lItZ6puIAAAAsoHOl/InsYxqxLjc+K6P8nUqYFUypPQykdN9PX5vWp9BhOje0s2ABtpSTdUeXCemanHEuPtbPXG/t0tWJeXJR/3YWN6E4pV3BTBwqhVySMayxaMRpJ2Md0bv9TaK4Y2w1xyj3ncCnEbbIks3dq9LgYe1RnAK9I/QmFJbOhfpbq/S9Cohw2ki4RQAAAD4DMtjbTo/gdWbQshE31hDPzG3aQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -37,6 +37,7 @@
           <SSIS:Package SSIS:Name="Pkg_FillStockDocumentInfo.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Pkg_RainProcess.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Pkg_FillBaseSaleInfo.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Pkg_FillItemStockInfo.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa.conmgr" />
@@ -200,10 +201,10 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_FillBaseInfo</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">634</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">636</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6DECFDF0-6CA6-4D3D-ADE8-AAB1DB05DA37}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{68F27088-EE69-4D7B-9980-01E888C22183}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -266,10 +267,10 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_FillSaleInfo</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">43</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C90289BC-E4B6-4DA1-A4A7-54AB6254057C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{838A337F-3033-4BFD-BDD7-A39AEF9B930F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -283,10 +284,10 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_FillStockDocumentInfo</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">74</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">84</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AD9876F7-A065-4583-A9C3-0E117A106E54}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{893270AE-09ED-4912-AD5F-C11878D89E76}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -300,10 +301,10 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_RainProcess</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">23</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{15B90DAC-5924-42CE-8CA7-91180A4CED65}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F0EFB497-00C7-4F1B-B50F-FC2E169D6CDA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -420,10 +421,27 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_FillBaseSaleInfo</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{11BE9A6C-D7E7-4963-A6A3-67B2867C657E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FC778DB7-0B33-43D7-AFE3-E39128E0E090}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Pkg_FillItemStockInfo.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{47815A74-2F75-4915-9F3E-58757AABEB6F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Pkg_FillItemStockInfo</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9862B780-D69B-47C5-B962-6072E1F3518F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

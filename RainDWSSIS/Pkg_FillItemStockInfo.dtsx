@@ -1,0 +1,575 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/17/2025 12:32:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DASHBOARD"
+  DTS:CreatorName="ANG\a.hasani"
+  DTS:DTSID="{47815A74-2F75-4915-9F3E-58757AABEB6F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Pkg_FillItemStockInfo"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{B20D420B-4DAB-41DD-8254-C87BD214A625}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DBC6482C-61E8-48E7-93F2-DB17E6A90E97}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;              &#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY(&quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;DECLARE     @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow    DATETIME , &#xA;&#x9;&#x9;&#x9;&#x9;@DateDayNow DATETIME &#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) &#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#x9;&#x9;SET @DateDayNow = CAST ( GETDATE() AS DATE )&#xA;&#xA;&#x9;SELECT CompanyID= 1  , StockID, ItemID, [DATE], StockQuantity =  SUM(Quantity) OVER(Partition BY StockID, ItemID ORDER BY [Date]) &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;SELECT ItemID&#xA;&#x9;&#x9;&#x9;&#x9; , StockID&#xA;&#x9;&#x9;&#x9;&#x9; , CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT) AS [Date]&#xA;&#x9;&#x9;&#x9;&#x9; , SUM(Quantity) AS Quantity &#xA;&#xA;&#x9;&#x9;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].ItemCardex WITH(NOLOCK)&#x9;&#xA;&#xA;&#x9;&#x9;&#x9;WHERE [Date] &gt; @FilterRainDate&#xA;&#x9;&#x9;&#x9;&#x9;AND [Date] &lt; @DateDayNow&#xA;&#x9;&#x9;&#x9;GROUP BY ItemID, StockID, CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#xA;&#x9;&#x9;) AS T'&#xA;)&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VDT_SourceFillDimFillItemStockInfo">
+      <DTS:VariableValue
+        DTS:DataType="8">              
+SELECT *
+		FROM OPENQUERY([10.15.20.229\RWP_2022] , 
+		' 
+	DECLARE     @FilterRainDate DateTime ,
+				@DateNow    DATETIME , 
+				@DateDayNow DATETIME 
+
+		SET @FilterRainDate =  CAST( ''9/14/2025 3:00:14 PM''  AS DATE) 
+		SET @DateNow = GETDATE()
+		SET @DateDayNow = CAST ( GETDATE() AS DATE )
+
+	SELECT CompanyID= 1  , StockID, ItemID, [DATE], StockQuantity =  SUM(Quantity) OVER(Partition BY StockID, ItemID ORDER BY [Date]) 
+	FROM (
+			SELECT ItemID
+				 , StockID
+				 , CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT) AS [Date]
+				 , SUM(Quantity) AS Quantity 
+
+			FROM [RWP_Sale_DB_Bakhshi].[dbo].ItemCardex WITH(NOLOCK)	
+
+			WHERE [Date] &gt; @FilterRainDate
+				AND [Date] &lt; @DateDayNow
+			GROUP BY ItemID, StockID, CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT)
+
+		) AS T'
+)
+</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F7971E5A-BC6A-42EE-AB40-DFBA563F15AC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="DATEADD(&quot;day&quot;, @[$Project::PR_GetDuration] * -1 , GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VR_FilterDate">
+      <DTS:VariableValue
+        DTS:DataType="7">9/14/2025 3:00:14 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Seq_FillItemStockInfo"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A94B70C1-A356-4692-ACDA-3F224DE1EE56}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Seq_FillItemStockInfo">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Seq_FillItemStockInfo\FillFactItemStock"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{707B0339-6B28-4C56-A2E1-49D525EA3294}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FillFactItemStock"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Dsn_SetData_FillItemStock"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FactItemStock]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Connections[OleDbConnection]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].Columns[CompanyID]"
+                          cachedDataType="i4"
+                          cachedName="CompanyID"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[CompanyID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[CompanyID]" />
+                        <inputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].Columns[StockID]"
+                          cachedDataType="guid"
+                          cachedName="StockID"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[StockID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockID]" />
+                        <inputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].Columns[ItemID]"
+                          cachedDataType="guid"
+                          cachedName="ItemID"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                        <inputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].Columns[StockQuantity]"
+                          cachedDataType="numeric"
+                          cachedName="StockQuantity"
+                          cachedPrecision="38"
+                          cachedScale="6"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[CurrentUnitCount]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockQuantity]" />
+                        <inputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].Columns[DATE]"
+                          cachedDataType="i4"
+                          cachedName="DATE"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[BusinessDay]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[DATE]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[CompanyID]"
+                          dataType="i4"
+                          name="CompanyID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[StockID]"
+                          dataType="guid"
+                          name="StockID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
+                          dataType="guid"
+                          name="ItemID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[BusinessDay]"
+                          dataType="i4"
+                          name="BusinessDay" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[CurrentUnitCount]"
+                          dataType="numeric"
+                          name="CurrentUnitCount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[ReserveUnitCount]"
+                          dataType="numeric"
+                          name="ReserveUnitCount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[StockPrice]"
+                          dataType="numeric"
+                          name="StockPrice"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[StockBulkPrice]"
+                          dataType="numeric"
+                          name="StockBulkPrice"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[StockCost]"
+                          dataType="numeric"
+                          name="StockCost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input].ExternalColumns[EtlTime]"
+                          dataType="dbTimeStamp"
+                          name="EtlTime" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Src_GetData_FillItemStock"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::VDT_SourceFillDimFillItemStockInfo</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Connections[OleDbConnection]"
+                      connectionManagerID="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DASHBOARD_MULTIDIMENSIONAL.RainDW_Bakhshi.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[CompanyID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[CompanyID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[CompanyID]"
+                          name="CompanyID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockID]"
+                          name="StockID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          name="ItemID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[DATE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[DATE]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[DATE]"
+                          name="DATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockQuantity]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[StockQuantity]"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].Columns[StockQuantity]"
+                          name="StockQuantity"
+                          precision="38"
+                          scale="6"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[CompanyID]"
+                          dataType="i4"
+                          name="CompanyID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          dataType="guid"
+                          name="StockID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          dataType="guid"
+                          name="ItemID" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[DATE]"
+                          dataType="i4"
+                          name="DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output].ExternalColumns[StockQuantity]"
+                          dataType="numeric"
+                          name="StockQuantity"
+                          precision="38"
+                          scale="6" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[CompanyID]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[CompanyID]"
+                          name="CompanyID" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          dataType="guid"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          name="StockID" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          dataType="guid"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          name="ItemID" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[DATE]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[DATE]"
+                          name="DATE" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[StockQuantity]"
+                          dataType="numeric"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[StockQuantity]"
+                          name="StockQuantity"
+                          precision="38"
+                          scale="6" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Seq_FillItemStockInfo\FillFactItemStock.Paths[OLE DB Source Output]"
+                  endId="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Seq_FillItemStockInfo\FillFactItemStock"
+          TopLeft="170,135" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="622,381"
+          Size="622,424"
+          Id="Package\Seq_FillItemStockInfo"
+          TopLeft="235,24" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Seq_FillItemStockInfo\FillFactItemStock">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock"
+          TopLeft="296,106" />
+        <NodeLayout
+          Size="287,42"
+          Id="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock"
+          TopLeft="287,271" />
+        <EdgeLayout
+          Id="Package\Seq_FillItemStockInfo\FillFactItemStock.Paths[OLE DB Source Output]"
+          TopLeft="398,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.5,123"
+              Start="0,0"
+              End="32.5,115.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.5"
+                    Point2="0,61.5"
+                    Point3="4,61.5" />
+                  <mssgle:LineSegment
+                    End="28.5,61.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5,61.5"
+                    Point2="32.5,61.5"
+                    Point3="32.5,65.5" />
+                  <mssgle:LineSegment
+                    End="32.5,115.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

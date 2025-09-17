@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{30A67EB7-83AC-4EBD-A507-A0E1060B83EB}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{838A337F-3033-4BFD-BDD7-A39AEF9B930F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B34E5DF4-7536-4060-B29E-B28602CE1EB6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DT_SourceFillFactItemStock">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{EFEAF724-7B95-498F-9552-D9A51419B3A6}"
@@ -33,7 +43,7 @@ SELECT *
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''8/20/2025 3:58:57 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''9/14/2025 12:22:56 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -95,7 +105,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20250820</DTS:VariableValue>
+        DTS:DataType="3">20250914</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -127,7 +137,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''8/20/2025 3:58:57 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''9/14/2025 12:22:56 PM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -156,7 +166,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">8/20/2025 3:58:57 PM</DTS:VariableValue>
+        DTS:DataType="7">9/14/2025 12:22:56 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
