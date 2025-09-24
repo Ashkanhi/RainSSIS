@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillItemStockInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{B20D420B-4DAB-41DD-8254-C87BD214A625}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{77B74860-707D-4778-BD8F-25A0A2E082B0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -20,7 +20,7 @@
       DTS:CreationName=""
       DTS:DTSID="{DBC6482C-61E8-48E7-93F2-DB17E6A90E97}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;              &#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY(&quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;DECLARE     @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow    DATETIME , &#xA;&#x9;&#x9;&#x9;&#x9;@DateDayNow DATETIME &#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) &#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#x9;&#x9;SET @DateDayNow = CAST ( GETDATE() AS DATE )&#xA;&#xA;&#x9;SELECT CompanyID= 1  , StockID, ItemID, [DATE], StockQuantity =  SUM(Quantity) OVER(Partition BY StockID, ItemID ORDER BY [Date]) &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;SELECT ItemID&#xA;&#x9;&#x9;&#x9;&#x9; , StockID&#xA;&#x9;&#x9;&#x9;&#x9; , CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT) AS [Date]&#xA;&#x9;&#x9;&#x9;&#x9; , SUM(Quantity) AS Quantity &#xA;&#xA;&#x9;&#x9;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].ItemCardex WITH(NOLOCK)&#x9;&#xA;&#xA;&#x9;&#x9;&#x9;WHERE [Date] &gt; @FilterRainDate&#xA;&#x9;&#x9;&#x9;&#x9;AND [Date] &lt; @DateDayNow&#xA;&#x9;&#x9;&#x9;GROUP BY ItemID, StockID, CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#xA;&#x9;&#x9;) AS T'&#xA;)&#xA;&quot;"
+      DTS:Expression="&quot;              &#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY(&quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;DECLARE     @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow    DATETIME , &#xA;&#x9;&#x9;&#x9;&#x9;@DateDayNow DATETIME &#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) &#xA;&#x9;&#x9;SET @DateNow = GETDATE()&#xA;&#x9;&#x9;SET @DateDayNow = CAST ( GETDATE() AS DATE )&#xA;&#xA;&#x9;SELECT CompanyID= 1  , StockID, ItemID, [DATE], StockQuantity =  SUM(Quantity) OVER(Partition BY StockID, ItemID ORDER BY [Date]) &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;SELECT ItemID&#xA;&#x9;&#x9;&#x9;&#x9; , StockID&#xA;&#x9;&#x9;&#x9;&#x9; , CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT) AS [Date]&#xA;&#x9;&#x9;&#x9;&#x9; , SUM(Quantity) AS Quantity &#xA;&#xA;&#x9;&#x9;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].ItemCardex WITH(NOLOCK)&#x9;&#xA;&#xA;&#x9;&#x9;&#x9;WHERE  [Date] &lt; @DateDayNow&#xA;&#x9;&#x9;&#x9;&#x9;--AND  [Date] &gt; @FilterRainDate&#xA;&#x9;&#x9;&#x9;GROUP BY ItemID, StockID, CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#xA;&#x9;&#x9;) AS T'&#xA;)&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="VDT_SourceFillDimFillItemStockInfo">
@@ -33,7 +33,7 @@ SELECT *
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''9/14/2025 3:00:55 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''9/21/2025 12:34:24 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -46,8 +46,8 @@ SELECT *
 
 			FROM [RWP_Sale_DB_Bakhshi].[dbo].ItemCardex WITH(NOLOCK)	
 
-			WHERE [Date] &gt; @FilterRainDate
-				AND [Date] &lt; @DateDayNow
+			WHERE  [Date] &lt; @DateDayNow
+				--AND  [Date] &gt; @FilterRainDate
 			GROUP BY ItemID, StockID, CAST(REPLACE(CAST(CAST([Date] AS DATE) AS NVARCHAR), ''-'', '''') AS INT)
 
 		) AS T'
@@ -63,7 +63,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">9/14/2025 3:00:55 PM</DTS:VariableValue>
+        DTS:DataType="7">9/21/2025 12:34:24 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -77,6 +77,23 @@ SELECT *
       DTS:ObjectName="Seq_FillItemStockInfo">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Seq_FillItemStockInfo\DeleteFactItemStock"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0DDB8EEE-EA9C-4555-9174-B2BCA5F4E761}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DeleteFactItemStock"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
+              SQLTask:SqlStatementSource="&#xA; TRUNCATE TABLE [dbo].[FactItemStock]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Seq_FillItemStockInfo\FillFactItemStock"
           DTS:CreationName="Microsoft.Pipeline"
@@ -472,6 +489,16 @@ SELECT *
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq_FillItemStockInfo.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C91F2AA3-2759-4E53-8F8B-F130FD68771A}"
+          DTS:From="Package\Seq_FillItemStockInfo\DeleteFactItemStock"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Seq_FillItemStockInfo\FillFactItemStock" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -485,11 +512,37 @@ SELECT *
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="159,42"
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock"
-          TopLeft="170,135" />
+          TopLeft="175,190" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Seq_FillItemStockInfo\DeleteFactItemStock"
+          TopLeft="167,86" />
+        <EdgeLayout
+          Id="Package\Seq_FillItemStockInfo.PrecedenceConstraints[Constraint]"
+          TopLeft="254.75,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -508,37 +561,25 @@ SELECT *
         <NodeLayout
           Size="204,42"
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock\Src_GetData_FillItemStock"
-          TopLeft="296,106" />
+          TopLeft="366,258" />
         <NodeLayout
           Size="287,42"
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock"
-          TopLeft="287,271" />
+          TopLeft="331,418" />
         <EdgeLayout
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock.Paths[OLE DB Source Output]"
-          TopLeft="398,148">
+          TopLeft="471.25,300">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="32.5,123"
+              EndConnector="0,118"
               Start="0,0"
-              End="32.5,115.5">
+              End="0,110.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,57.5"
-                    Point2="0,61.5"
-                    Point3="4,61.5" />
-                  <mssgle:LineSegment
-                    End="28.5,61.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.5,61.5"
-                    Point2="32.5,61.5"
-                    Point3="32.5,65.5" />
-                  <mssgle:LineSegment
-                    End="32.5,115.5" />
+                    End="0,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
