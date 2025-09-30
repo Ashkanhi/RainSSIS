@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_RainProcess"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{5F18754B-F713-49F4-AE7A-783EDEFA8FFA}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{184FC9FF-C036-41BF-B210-F300919FDB26}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -50,7 +50,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -100,12 +100,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="WarehouseConfiguration"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
-              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '2.0.0.2'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '2.0.0.3'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
