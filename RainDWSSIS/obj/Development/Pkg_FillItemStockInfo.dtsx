@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillItemStockInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{77B74860-707D-4778-BD8F-25A0A2E082B0}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{04980C59-A0A7-44DD-A45A-1EC4848C9D29}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -27,13 +27,13 @@
       <DTS:VariableValue
         DTS:DataType="8">              
 SELECT *
-		FROM OPENQUERY([10.15.20.229\RWP_2022] , 
+		FROM OPENQUERY([10.15.20.39\RWP_2022] , 
 		' 
 	DECLARE     @FilterRainDate DateTime ,
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''9/21/2025 12:34:24 PM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:46 AM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -63,7 +63,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">9/21/2025 12:34:24 PM</DTS:VariableValue>
+        DTS:DataType="7">2/20/2026 9:40:46 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -514,13 +514,13 @@ SELECT *
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="159,42"
-          Id="Package\Seq_FillItemStockInfo\FillFactItemStock"
-          TopLeft="175,190" />
-        <NodeLayout
           Size="176,42"
           Id="Package\Seq_FillItemStockInfo\DeleteFactItemStock"
           TopLeft="167,86" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Seq_FillItemStockInfo\FillFactItemStock"
+          TopLeft="175,190" />
         <EdgeLayout
           Id="Package\Seq_FillItemStockInfo.PrecedenceConstraints[Constraint]"
           TopLeft="254.75,128">
@@ -565,21 +565,33 @@ SELECT *
         <NodeLayout
           Size="287,42"
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock\Dsn_SetData_FillItemStock"
-          TopLeft="331,418" />
+          TopLeft="333,418" />
         <EdgeLayout
           Id="Package\Seq_FillItemStockInfo\FillFactItemStock.Paths[OLE DB Source Output]"
-          TopLeft="471.25,300">
+          TopLeft="468,300">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,118"
+              EndConnector="8.5,118"
               Start="0,0"
-              End="0,110.5">
+              End="8.5,110.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,110.5" />
+                    End="0,55" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55"
+                    Point2="0,59"
+                    Point3="4,59" />
+                  <mssgle:LineSegment
+                    End="4.5,59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,59"
+                    Point2="8.5,59"
+                    Point3="8.5,63" />
+                  <mssgle:LineSegment
+                    End="8.5,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

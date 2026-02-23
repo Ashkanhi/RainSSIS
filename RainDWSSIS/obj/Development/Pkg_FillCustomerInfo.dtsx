@@ -43,8 +43,8 @@ SELECT
     0.000000 AS Longitude,
     StoreID = 1,
     EtlTime = @DateNow
-FROM [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[CustomerView] X
-LEFT JOIN [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].CustomerGroupAssignment CG  
+FROM [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[CustomerView] X
+LEFT JOIN [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].CustomerGroupAssignment CG  
     ON CG.CustomerID = X.CustomerID 
     AND CG.TYPEID = 1
 WHERE X.LanguageID = 314 

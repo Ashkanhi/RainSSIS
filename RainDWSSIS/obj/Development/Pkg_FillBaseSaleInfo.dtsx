@@ -39,7 +39,7 @@ SELECT	  SupplierID
 		, Longitude= NULL 
 		, EtlTime = @DateNow
 
-FROM [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].SupplierView X
+FROM [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].SupplierView X
 WHERE NOT EXISTS (SELECT * FROM dbo.DimSupplier WHERE SupplierID = X.SupplierID)
 AND LanguageID = 314
 </DTS:VariableValue>
@@ -56,7 +56,7 @@ AND LanguageID = 314
         DTS:DataType="8">
  SELECT *
 		
-	FROM OPENQUERY( [10.15.20.229\RWP_2022] , 
+	FROM OPENQUERY( [10.15.20.39\RWP_2022] , 
 		
 		
 	

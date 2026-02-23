@@ -37,13 +37,13 @@
       <DTS:VariableValue
         DTS:DataType="8">			
 SELECT *
-		FROM OPENQUERY( [10.15.20.229\RWP_2022] , 
+		FROM OPENQUERY( [10.15.20.39\RWP_2022] , 
 		' 
 		DECLARE @FilterRainDate DateTime ,
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''10/15/2025 10:27:36 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:45 AM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -106,7 +106,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20251015</DTS:VariableValue>
+        DTS:DataType="3">20260220</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -130,7 +130,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
         DTS:DataType="8">
  SELECT *
 		
-	FROM OPENQUERY( [10.15.20.229\RWP_2022] , 
+	FROM OPENQUERY( [10.15.20.39\RWP_2022] , 
 		
 		'DECLARE @FilterRainDate DateTime ,
 				
@@ -138,7 +138,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''10/15/2025 10:27:36 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:45 AM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -167,7 +167,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">10/15/2025 10:27:36 AM</DTS:VariableValue>
+        DTS:DataType="7">2/20/2026 9:40:45 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
