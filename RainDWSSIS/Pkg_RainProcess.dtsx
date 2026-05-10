@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_RainProcess"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{C9CF755B-ACD0-4A41-82AD-1BA2996BE664}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{1E1B9485-E802-4DFE-972C-2E1935024715}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -122,7 +122,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
-              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '3.0.0.0'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="UPDATE  C SET  UpdateVersion = '5.0.0.7'&#xA;&#x9;&#x9;&#x9; , UpdateTime = GETDATE()&#xA;FROM [dbo].[WarehouseConfiguration]  C &#xA;WHERE CID =  1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -186,6 +186,10 @@
           Size="153,42"
           Id="Package\Seq_Proccess\ProccessAllTask"
           TopLeft="229.75,38" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Seq_Proccess\RunCustomTask"
+          TopLeft="25,102" />
         <NodeLayout
           Size="195,42"
           Id="Package\Seq_Proccess\WarehouseConfiguration"
@@ -292,10 +296,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Seq_Proccess\RunCustomTask"
-          TopLeft="25,102" />
         <EdgeLayout
           Id="Package\Seq_Proccess.PrecedenceConstraints[Constraint 3]"
           TopLeft="180,123">

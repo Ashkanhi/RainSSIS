@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillSaleInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{1317D258-7250-47E8-85F4-B32F9E6E23D3}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{CDB05EA3-524F-43C0-9355-3EBFB5279FFE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -43,7 +43,7 @@ SELECT *
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:45 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''5/7/2026 1:00:54 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -106,7 +106,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20260220</DTS:VariableValue>
+        DTS:DataType="3">20260507</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -138,7 +138,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
 
 		
 
-		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:45 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''5/7/2026 1:00:54 PM''  AS DATE) 
 		
 		SET @DateNow = GETDATE()
 
@@ -167,7 +167,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">2/20/2026 9:40:45 AM</DTS:VariableValue>
+        DTS:DataType="7">5/7/2026 1:00:54 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -185,6 +185,7 @@ AND ( S.BusinessDate &gt; @FilterRainDate
           DTS:refId="Package\Seq_FillSaleInfo\CheckCustomerExists"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
+          DTS:Disabled="True"
           DTS:DTSID="{04eef882-ce97-4d35-a5ea-1d1cc9f9566f}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -2072,7 +2073,7 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="179,42"
           Id="Package\Seq_FillSaleInfo\CheckCustomerExists"
-          TopLeft="44,31" />
+          TopLeft="44,32" />
         <NodeLayout
           Size="180,42"
           Id="Package\Seq_FillSaleInfo\DeleteFactSaleReturn"
@@ -2181,18 +2182,18 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillSaleInfo.PrecedenceConstraints[Constraint 5]"
-          TopLeft="129.875,73">
+          TopLeft="129.875,74">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79.75"
+              EndConnector="0,78.75"
               Start="0,0"
-              End="0,72.25">
+              End="0,71.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.25" />
+                    End="0,71.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2259,9 +2260,7 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

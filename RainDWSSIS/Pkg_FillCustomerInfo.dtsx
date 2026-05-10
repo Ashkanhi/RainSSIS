@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillCustomerInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{4121CCF9-A1AC-4D1A-8662-1B060F17E564}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{0911E0A9-8EE2-497A-B59D-ABCBF997BDDF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -20,20 +20,28 @@
       DTS:CreationName=""
       DTS:DTSID="{D0D41E7E-48E5-47AE-A5EC-96EF6F112043}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;&#xA;DECLARE @DateNow DATETIME &#xA;&#xA;SET @DateNow = GETDATE ()&#xA;&#xA;SELECT &#xA;    X.CustomerID,&#xA;    CustomerGroupID,&#xA;    CustomerCode = CAST(CustomerCode AS NVARCHAR(50)),&#xA;    CustomerName = CAST(  X.CustomerName AS NVARCHAR(400)) , &#xA;    Phone = CAST ( X.Telephone AS  nvarchar(50)  ),&#xA;    Mobile = CAST ( X.Mobile AS  nvarchar(50)) ,&#xA;    Birthday = CAST (Birthday AS DATE  ) ,&#xA;    [Address] = CAST ( [Address] AS nvarchar(1000) ),&#xA;    0.000000 AS Latitude,&#xA;    0.000000 AS Longitude,&#xA;    StoreID = 1,&#xA;    EtlTime = @DateNow&#xA;FROM &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].[CustomerView] X&#xA;LEFT JOIN &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].CustomerGroupAssignment CG  &#xA;    ON CG.CustomerID = X.CustomerID &#xA;    AND CG.TYPEID = 1&#xA;WHERE X.LanguageID = 314 &#xA;AND NOT EXISTS (&#xA;    SELECT * &#xA;    FROM [dbo].DimCustomer &#xA;    WHERE CustomerID = X.CustomerID&#xA;)&quot;"
+      DTS:Expression="&quot;&#xA;DECLARE   @DateNow DATETIME &#xA;&#x9;&#x9;, @CustomerCode BIGINT&#xA;&#xA;&#xA;SET @DateNow = GETDATE ()&#xA;&#xA;&#xA;SET @CustomerCode =&#x9;(SELECT  MAX (CAST ( CustomerCode AS BIGINT )) +1     FROM DimCustomer &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE CustomerGroupID =  '49ECF665-A772-4643-A93B-06B7EAD2C5D6' &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#xA;SELECT *  FROM (&#xA;SELECT &#xA;    X.CustomerID,&#xA;    CustomerGroupID,&#xA;    CustomerCode = TRY_CAST(CustomerCode AS NVARCHAR(50)),&#xA;    CustomerName = CAST(  X.CustomerName AS NVARCHAR(400)) , &#xA;    Phone = CAST ( X.Telephone AS  nvarchar(50)  ),&#xA;    Mobile = CAST ( X.Mobile AS  nvarchar(50)) ,&#xA;    Birthday = CAST (Birthday AS DATE  ) ,&#xA;    [Address] = CAST ( [Address] AS nvarchar(1000) ),&#xA;    0.000000 AS Latitude,&#xA;    0.000000 AS Longitude,&#xA;    StoreID = 1,&#xA;    EtlTime = @DateNow&#xA;FROM &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].[CustomerView] X&#xA;LEFT JOIN &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].CustomerGroupAssignment CG  &#xA;    ON CG.CustomerID = X.CustomerID &#xA;    AND CG.TYPEID = 1&#xA;WHERE X.LanguageID = 314 &#xA;&#x9;UNION &#xA;&#xA;SELECT   Customerid &#xA;&#x9;   , '49ECF665-A772-4643-A93B-06B7EAD2C5D6'&#xA;&#x9;   ,   &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ISNULL ( TRY_CAST ( @CustomerCode + ROW_NUMBER() OVER(ORDER BY (SELECT 1 ) ) AS NVARCHAR(50) ) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,&#x9;&#xA;&#x9;   &#x9;&#x9;&#x9;&#x9;TRY_CAST ( 404 + ROW_NUMBER()OVER(ORDER BY (SELECT 1 ) )   AS NVARCHAR(50) )&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;   , N'فاقد مشخصات'&#xA;&#x9;   , Phone = NULL &#xA;&#x9;   , Mobile = NULL&#xA;&#x9;   , Birthday = CAST (@DateNow AS DATE  ) &#xA;&#x9;   , NULL &#xA;&#x9;   , 0.000000 AS Latitude&#xA;&#x9;   , 0.000000 AS Longitude&#xA;&#x9;   ,  StoreID = 1 &#xA;&#x9;   , EtlTime = GETDATE ()&#xA;&#x9;   &#xA;&#xA;FROM &quot; + @[$Project::PR_LinkServerPath] + &quot;[dbo].[Customer]&#xA;WHERE&#x9;PartyID  IS NULL &#xA;&#xA; &#x9;) AS C &#xA;&#xA;WHERE  NOT EXISTS (&#xA;    SELECT * &#xA;    FROM [dbo].DimCustomer &#xA;    WHERE CustomerID = C.CustomerID&#xA;&#x9;&#x9;&#x9;)&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DT_SourceFillDimCustomerInfo">
       <DTS:VariableValue
         DTS:DataType="8">
-DECLARE @DateNow DATETIME 
+DECLARE   @DateNow DATETIME 
+		, @CustomerCode BIGINT
+
 
 SET @DateNow = GETDATE ()
 
+
+SET @CustomerCode =	(SELECT  MAX (CAST ( CustomerCode AS BIGINT )) +1     FROM DimCustomer 
+						WHERE CustomerGroupID =  '49ECF665-A772-4643-A93B-06B7EAD2C5D6' 
+						)
+
+SELECT *  FROM (
 SELECT 
     X.CustomerID,
     CustomerGroupID,
-    CustomerCode = CAST(CustomerCode AS NVARCHAR(50)),
+    CustomerCode = TRY_CAST(CustomerCode AS NVARCHAR(50)),
     CustomerName = CAST(  X.CustomerName AS NVARCHAR(400)) , 
     Phone = CAST ( X.Telephone AS  nvarchar(50)  ),
     Mobile = CAST ( X.Mobile AS  nvarchar(50)) ,
@@ -43,16 +51,43 @@ SELECT
     0.000000 AS Longitude,
     StoreID = 1,
     EtlTime = @DateNow
-FROM [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[CustomerView] X
-LEFT JOIN [10.15.20.229\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].CustomerGroupAssignment CG  
+FROM [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[CustomerView] X
+LEFT JOIN [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].CustomerGroupAssignment CG  
     ON CG.CustomerID = X.CustomerID 
     AND CG.TYPEID = 1
 WHERE X.LanguageID = 314 
-AND NOT EXISTS (
+	UNION 
+
+SELECT   Customerid 
+	   , '49ECF665-A772-4643-A93B-06B7EAD2C5D6'
+	   ,   		 
+			ISNULL ( TRY_CAST ( @CustomerCode + ROW_NUMBER() OVER(ORDER BY (SELECT 1 ) ) AS NVARCHAR(50) ) 
+						,	
+	   				TRY_CAST ( 404 + ROW_NUMBER()OVER(ORDER BY (SELECT 1 ) )   AS NVARCHAR(50) )
+				)
+				
+	   , N'فاقد مشخصات'
+	   , Phone = NULL 
+	   , Mobile = NULL
+	   , Birthday = CAST (@DateNow AS DATE  ) 
+	   , NULL 
+	   , 0.000000 AS Latitude
+	   , 0.000000 AS Longitude
+	   ,  StoreID = 1 
+	   , EtlTime = GETDATE ()
+	   
+
+FROM [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[Customer]
+WHERE	PartyID  IS NULL 
+
+ 	) AS C 
+
+WHERE  NOT EXISTS (
     SELECT * 
     FROM [dbo].DimCustomer 
-    WHERE CustomerID = X.CustomerID
-)</DTS:VariableValue>
+    WHERE CustomerID = C.CustomerID
+			)
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -544,7 +579,7 @@ AND NOT EXISTS (
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Output].ExternalColumns[CustomerCode]"
                           dataType="wstr"
-                          length="50"
+                          length="200"
                           name="CustomerCode" />
                         <externalMetadataColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
@@ -614,7 +649,7 @@ AND NOT EXISTS (
                         <outputColumn
                           refId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Error Output].Columns[CustomerCode]"
                           dataType="wstr"
-                          length="50"
+                          length="200"
                           lineageId="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer.Outputs[OLE DB Source Error Output].Columns[CustomerCode]"
                           name="CustomerCode" />
                         <outputColumn
@@ -712,7 +747,7 @@ AND NOT EXISTS (
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F5D3767B-013C-4373-B1FC-DA2F9A79F694}"
-              SQLTask:SqlStatementSource="&#xA;DECLARE  @LinkServerPath NVARCHAR(50)&#xA;  , @DateNow DATETIME &#xA;  ,  @CompanyID INT &#xA;  , @SQL NVARCHAR(MAX);&#xA;&#xA;  SET @DateNow =  GETDATE() &#xA;  SET @LinkServerPath = ( ? )&#xA;  SET @CompanyID = ( ? )&#xA;&#xA; &#xA;  &#xA;      SET @SQL =&#xA;         '     &#xA;          INSERT INTO dbo.[DimCustomerGroup]&#xA;            ([GroupID]&#xA;             , [Name]&#xA;             , [EtlTime]&#xA;            )&#xA;          SELECT CustomerGroupID, Name , GETDATE()   FROM '+ @LinkServerPath +'[dbo].CustomerGroup X&#xA;          WHERE NOT EXISTS (SELECT * FROM dbo.[DimCustomerGroup] WHERE GroupID = X.CustomerGroupID)          &#xA; &#xA;             '      &#xA;&#xA;    -- print @SQL&#xA;&#xA;     -- Execute sp_executesql with parameter definitions&#xA;     EXEC sp_executesql &#xA;      @SQL,&#xA;      N'@CompanyIdParam INT, @DateNowParam DATETIME',&#xA;      @CompanyIdParam = @CompanyID,&#xA;      @DateNowParam = @DateNow;&#xA;&#xA;&#xA;     --SET   ?  = ('Ashkan' )&#xA;     SET   ?  = (  CONCAT (  @LinkServerPath&#xA;            ,  CHAR(13)&#xA;            , 'Insert Success '  &#xA;            ,  'Seq_FillCustomerInfo_02_DimCustomerGroup '&#xA;            , @DateNow&#xA;            ,  CHAR(13)&#xA;     &#xA;           )&#xA;         )&#xA;        &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="DECLARE  @LinkServerPath NVARCHAR(50)&#xA;  , @DateNow DATETIME &#xA;  ,  @CompanyID INT &#xA;  , @SQL NVARCHAR(MAX);&#xA;&#xA;  SET @DateNow =  GETDATE() &#xA;  SET @LinkServerPath = ( ? )&#xA;  SET @CompanyID = ( ? )&#xA;&#xA; &#xA;  &#xA;      SET @SQL =&#xA;         N'     &#xA;          INSERT INTO dbo.[DimCustomerGroup]&#xA;            ([GroupID]&#xA;             , [Name]&#xA;             , [EtlTime]&#xA;            )&#xA;&#x9;&#x9;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT CustomerGroupID, Name , GETDATE() AS EtlDate  FROM '+ @LinkServerPath +N'[dbo].CustomerGroup X&#xA;&#x9;&#x9;&#x9;&#x9;UNION &#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;''49ECF665-A772-4643-A93B-06B7EAD2C5D6''&#xA;&#x9;&#x9;&#x9;&#x9;,&#x9;N''فاقد مشخصات''&#xA;&#x9;&#x9;&#x9;&#x9;,   GETDATE() AS EtlDate&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;AS X          &#xA;&#x9;&#x9;&#x9;WHERE NOT EXISTS (SELECT * FROM dbo.[DimCustomerGroup] WHERE GroupID = X.CustomerGroupID)           &#xA;             '      &#xA;&#xA;    -- print @SQL&#xA;&#xA;     -- Execute sp_executesql with parameter definitions&#xA;     EXEC sp_executesql &#xA;      @SQL,&#xA;      N'@CompanyIdParam INT, @DateNowParam DATETIME',&#xA;      @CompanyIdParam = @CompanyID,&#xA;      @DateNowParam = @DateNow;&#xA;&#xA;&#xA;     --SET   ?  = ('Ashkan' )&#xA;     SET   ?  = (  CONCAT (  @LinkServerPath&#xA;            ,  CHAR(13)&#xA;            , 'Insert Success '  &#xA;            ,  'Seq_FillCustomerInfo_02_DimCustomerGroup '&#xA;            , @DateNow&#xA;            ,  CHAR(13)&#xA;     &#xA;           )&#xA;         )&#xA;        &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="$Project::PR_LinkServerPath"
@@ -803,7 +838,7 @@ AND NOT EXISTS (
         <NodeLayout
           Size="184,42"
           Id="Package\Seq_FillCustomerInfo\FillDimCustomerGroup"
-          TopLeft="45.5,230" />
+          TopLeft="37.5,149" />
         <NodeLayout
           Size="163,42"
           Id="Package\Seq_FillCustomerInfo\FillDimEtlTime"
@@ -814,26 +849,14 @@ AND NOT EXISTS (
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8,154"
+              EndConnector="0,73"
               Start="0,0"
-              End="8,146.5">
+              End="0,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,73" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,73"
-                    Point2="0,77"
-                    Point3="4,77" />
-                  <mssgle:LineSegment
-                    End="4,77" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4,77"
-                    Point2="8,77"
-                    Point3="8,81" />
-                  <mssgle:LineSegment
-                    End="8,146.5" />
+                    End="0,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -866,30 +889,30 @@ AND NOT EXISTS (
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillCustomerInfo.PrecedenceConstraints[Constraint 2]"
-          TopLeft="229.5,251">
+          TopLeft="129.5,191">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="100.5,16"
+              EndConnector="256.166666666667,55"
               Start="0,0"
-              End="93,16">
+              End="256.166666666667,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="46.25,0" />
+                    End="0,28.6792223572296" />
                   <mssgle:CubicBezierSegment
-                    Point1="46.25,0"
-                    Point2="50.25,0"
-                    Point3="50.25,4" />
+                    Point1="0,28.6792223572296"
+                    Point2="0,32.6792223572296"
+                    Point3="4,32.6792223572296" />
                   <mssgle:LineSegment
-                    End="50.25,12" />
+                    End="252.166666666667,32.6792223572296" />
                   <mssgle:CubicBezierSegment
-                    Point1="50.25,12"
-                    Point2="50.25,16"
-                    Point3="54.25,16" />
+                    Point1="252.166666666667,32.6792223572296"
+                    Point2="256.166666666667,32.6792223572296"
+                    Point3="256.166666666667,36.6792223572296" />
                   <mssgle:LineSegment
-                    End="93,16" />
+                    End="256.166666666667,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -901,8 +924,8 @@ AND NOT EXISTS (
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="552,311"
-          Size="552,354"
+          PanelSize="552,343"
+          Size="552,386"
           Id="Package\Seq_FillCustomerInfo"
           TopLeft="187,75" />
       </GraphLayout>
@@ -912,7 +935,7 @@ AND NOT EXISTS (
     design-time-name="Package\Seq_FillCustomerInfo\FillDimCustomer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="189,42"
           Id="Package\Seq_FillCustomerInfo\FillDimCustomer\Src_GetData_Customer"
@@ -940,9 +963,7 @@ AND NOT EXISTS (
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

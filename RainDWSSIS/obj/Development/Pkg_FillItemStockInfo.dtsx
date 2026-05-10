@@ -33,7 +33,7 @@ SELECT *
 				@DateNow    DATETIME , 
 				@DateDayNow DATETIME 
 
-		SET @FilterRainDate =  CAST( ''2/20/2026 9:40:46 AM''  AS DATE) 
+		SET @FilterRainDate =  CAST( ''5/7/2026 1:00:55 PM''  AS DATE) 
 		SET @DateNow = GETDATE()
 		SET @DateDayNow = CAST ( GETDATE() AS DATE )
 
@@ -63,7 +63,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">2/20/2026 9:40:46 AM</DTS:VariableValue>
+        DTS:DataType="7">5/7/2026 1:00:55 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
