@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_FillStockDocumentInfo"
   DTS:PackageType="5"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{893270AE-09ED-4912-AD5F-C11878D89E76}">
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{E732DDB4-D8FF-46CD-A274-E4CC9A15313D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -36,7 +36,7 @@ SELECT
 		, NameEn = NULL
 		, EtlTime = @DateNow
 
-FROM [10.15.20.39\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[ThirdParty] X
+FROM [10.15.20.40\RWP_2022].[RWP_Sale_DB_Bakhshi].[dbo].[ThirdParty] X
 WHERE NOT EXISTS (SELECT * FROM [dbo].[DimThirdParty] WHERE ThirdPartyID = X.ThirdPartyID)
 </DTS:VariableValue>
     </DTS:Variable>
@@ -44,19 +44,19 @@ WHERE NOT EXISTS (SELECT * FROM [dbo].[DimThirdParty] WHERE ThirdPartyID = X.Thi
       DTS:CreationName=""
       DTS:DTSID="{CD2AED95-C566-493E-9D48-5A1756BE2B6A}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow DATETIME ;&#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) ;&#xA;&#x9;&#x9;SET @DateNow = GETDATE();&#xA; &#xA;   &#xA;&#xA;&#x9;SELECT&#x9; CompanyID =  1&#xA;&#x9;&#x9;&#x9;, D.BookerStoreID&#xA;&#x9;&#x9;&#x9;, D.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;, D.DocumentID&#xA;&#x9;&#x9;&#x9;, DI.LineItemID&#xA;&#x9;&#x9;&#x9;, D.DocumentTypeID&#xA;&#x9;&#x9;&#x9;, DocumentDate = CAST(REPLACE(CAST(CAST(D.DocumentDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#x9;&#x9;&#x9;, FinanceApprove&#xA;&#x9;&#x9;&#x9;, D.StatusID&#xA;&#x9;&#x9;&#x9;, SourceStoreID&#xA;&#x9;&#x9;&#x9;, SourceStockID&#xA;&#x9;&#x9;&#x9;, TargetStoreID&#xA;&#x9;&#x9;&#x9;, TargetStockID&#xA;&#x9;&#x9;&#x9;, D.SupplierID&#xA;&#x9;&#x9;&#x9;, ThirdPartyID&#xA;&#x9;&#x9;&#x9;, ItemID&#xA;&#x9;&#x9;&#x9;, ReasonID&#xA;&#x9;&#x9;&#x9;, DepartmentID&#xA;&#x9;&#x9;&#x9;, UsageTypeID&#xA;&#x9;&#x9;&#x9;, LastUnitCount&#xA;&#x9;&#x9;&#x9;--, ScannedCount&#xA;&#x9;&#x9;&#x9;, PackUnitCount&#xA;&#x9;&#x9;&#x9;, PackCount&#xA;&#x9;&#x9;&#x9;, UnitCount&#xA;&#x9;&#x9;&#x9;, DamagedCount&#xA;&#x9;&#x9;&#x9;, BonusCount&#xA;&#x9;&#x9;&#x9;, RemindCount&#xA;&#x9;&#x9;&#x9;, Cost&#xA;&#x9;&#x9;&#x9;, DI.Discount&#xA;&#x9;&#x9;&#x9;, SupplierDiscount&#xA;&#x9;&#x9;&#x9;, Tax&#xA;&#x9;&#x9;&#x9;, Toll&#xA;&#x9;&#x9;&#x9;, PositiveCost&#xA;&#x9;&#x9;&#x9;, NegativeCost&#xA;&#x9;&#x9;&#x9;, NetCost&#xA;&#x9;&#x9;&#x9;, SalePrice&#xA;&#x9;&#x9;&#x9;, SC.ContractID&#xA;&#x9;&#x9;&#x9;, SC.ContractTypeID&#xA;&#x9;&#x9;&#x9;--, Count1&#xA;&#x9;&#x9;&#x9;--, Count2&#xA;&#x9;&#x9;&#x9;, Discount1&#xA;&#x9;&#x9;&#x9;, Discount2&#xA;&#x9;&#x9;&#x9;, Discount3&#xA;&#x9;&#x9;&#x9;, Discount4&#xA;&#x9;&#x9;&#x9;, Discount5&#xA;&#x9;&#x9;&#x9;, EtlTime =@DateNow&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#xA;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentView D WITH(NOLOCK)&#xA;&#x9;&#x9;INNER JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON D.BookerStoreID = DI.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND D.BookerWorkstationID = DI.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND D.DocumentID = DI.DocumentID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemContract DIC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DIC.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DIC.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DIC.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DIC.LineItemID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract SC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DIC.ContractID = SC.ContractID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemCustomDiscount DID WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DID.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DID.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DID.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DID.LineItemID&#xA;&#x9;WHERE D.StatusID = 246&#xA;&#x9;AND D.DocumentLanguage = 314&#xA;&#xA;&#x9;AND   CAST ( D.DocumentDate AS DATE  ) &gt; @FilterRainDate')&quot;"
+      DTS:Expression="&quot;&#xA;SELECT *&#xA;&#x9;&#x9;FROM OPENQUERY( &quot;+ @[$Project::PR_RainLinkServerName] +&quot; , &#xA;&#x9;&#x9;' &#xA;&#x9;&#x9;DECLARE @FilterRainDate DateTime ,&#xA;&#x9;&#x9;&#x9;&#x9;@DateNow DATETIME ;&#xA;&#xA;&#x9;&#x9;SET @FilterRainDate =  CAST( ''&quot;+(DT_WSTR, 30)  @[User::VR_FilterDate] + &quot;''  AS DATE) ;&#xA;&#x9;&#x9;SET @DateNow = GETDATE();&#xA; &#xA;   &#xA;&#xA;&#x9;SELECT&#x9; CompanyID =  1&#xA;&#x9;&#x9;&#x9;, D.BookerStoreID&#xA;&#x9;&#x9;&#x9;, D.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;, D.DocumentID&#xA;&#x9;&#x9;&#x9;, DI.LineItemID&#xA;&#x9;&#x9;&#x9;, D.DocumentTypeID&#xA;&#x9;&#x9;&#x9;, DocumentDate = CAST(REPLACE(CAST(CAST(D.DocumentDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT)&#xA;&#x9;&#x9;&#x9;--, FinanceApprove&#xA;&#x9;&#x9;&#x9;, D.StatusID&#xA;&#x9;&#x9;&#x9;, SourceStoreID&#xA;&#x9;&#x9;&#x9;, SourceStockID&#xA;&#x9;&#x9;&#x9;, TargetStoreID&#xA;&#x9;&#x9;&#x9;, TargetStockID&#xA;&#x9;&#x9;&#x9;, D.SupplierID&#xA;&#x9;&#x9;&#x9;, ThirdPartyID&#xA;&#x9;&#x9;&#x9;, ItemID&#xA;&#x9;&#x9;&#x9;, ReasonID&#xA;&#x9;&#x9;&#x9;, DepartmentID&#xA;&#x9;&#x9;&#x9;, UsageTypeID&#xA;&#x9;&#x9;&#x9;, LastUnitCount&#xA;&#x9;&#x9;&#x9;--, ScannedCount&#xA;&#x9;&#x9;&#x9;, PackUnitCount&#xA;&#x9;&#x9;&#x9;, PackCount&#xA;&#x9;&#x9;&#x9;, UnitCount&#xA;&#x9;&#x9;&#x9;, DamagedCount&#xA;&#x9;&#x9;&#x9;, BonusCount&#xA;&#x9;&#x9;&#x9;, RemindCount&#xA;&#x9;&#x9;&#x9;, Cost&#xA;&#x9;&#x9;&#x9;, DI.Discount&#xA;&#x9;&#x9;&#x9;, SupplierDiscount&#xA;&#x9;&#x9;&#x9;, Tax&#xA;&#x9;&#x9;&#x9;, Toll&#xA;&#x9;&#x9;&#x9;, PositiveCost&#xA;&#x9;&#x9;&#x9;, NegativeCost&#xA;&#x9;&#x9;&#x9;, NetCost&#xA;&#x9;&#x9;&#x9;, SalePrice&#xA;&#x9;&#x9;&#x9;, SC.ContractID&#xA;&#x9;&#x9;&#x9;, SC.ContractTypeID&#xA;&#x9;&#x9;&#x9;--, Count1&#xA;&#x9;&#x9;&#x9;--, Count2&#xA;&#x9;&#x9;&#x9;, Discount1&#xA;&#x9;&#x9;&#x9;, Discount2&#xA;&#x9;&#x9;&#x9;, Discount3&#xA;&#x9;&#x9;&#x9;, Discount4&#xA;&#x9;&#x9;&#x9;, Discount5&#xA;&#x9;&#x9;&#x9;, EtlTime =@DateNow&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#xA;&#x9;FROM &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentView D WITH(NOLOCK)&#xA;&#x9;&#x9;INNER JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItem DI WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON D.BookerStoreID = DI.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND D.BookerWorkstationID = DI.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND D.DocumentID = DI.DocumentID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemContract DIC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DIC.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DIC.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DIC.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DIC.LineItemID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].SupplierContract SC WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DIC.ContractID = SC.ContractID&#xA;&#xA;&#x9;&#x9;LEFT JOIN &quot;+@[$Project::PR_RainDataBaseName]+&quot;[dbo].StockDocumentLineItemCustomDiscount DID WITH(NOLOCK)&#xA;&#x9;&#x9;&#x9;ON DI.BookerStoreID = DID.BookerStoreID&#xA;&#x9;&#x9;&#x9;AND DI.BookerWorkstationID = DID.BookerWorkstationID&#xA;&#x9;&#x9;&#x9;AND DI.DocumentID = DID.DocumentID&#xA;&#x9;&#x9;&#x9;AND DI.LineItemID = DID.LineItemID&#xA;&#x9;WHERE D.StatusID = 246&#xA;&#x9;AND D.DocumentLanguage = 314&#xA;&#xA;&#x9;AND   CAST ( D.DocumentDate AS DATE  ) &gt; @FilterRainDate')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DT_SourceFillFactStockDocumentInfo">
       <DTS:VariableValue
         DTS:DataType="8">
 SELECT *
-		FROM OPENQUERY( [10.15.20.39\RWP_2022] , 
+		FROM OPENQUERY( [10.15.20.40\RWP_2022] , 
 		' 
 		DECLARE @FilterRainDate DateTime ,
 				@DateNow DATETIME ;
 
-		SET @FilterRainDate =  CAST( ''5/7/2026 1:00:54 PM''  AS DATE) ;
+		SET @FilterRainDate =  CAST( ''7/25/2026 9:05:01 AM''  AS DATE) ;
 		SET @DateNow = GETDATE();
  
    
@@ -68,7 +68,7 @@ SELECT *
 			, DI.LineItemID
 			, D.DocumentTypeID
 			, DocumentDate = CAST(REPLACE(CAST(CAST(D.DocumentDate AS DATE) AS NVARCHAR), ''-'', '''') AS INT)
-			, FinanceApprove
+			--, FinanceApprove
 			, D.StatusID
 			, SourceStoreID
 			, SourceStockID
@@ -142,7 +142,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_CalcFilterDate">
       <DTS:VariableValue
-        DTS:DataType="3">20260507</DTS:VariableValue>
+        DTS:DataType="3">20260725</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -153,7 +153,7 @@ SELECT *
       DTS:Namespace="User"
       DTS:ObjectName="VR_FilterDate">
       <DTS:VariableValue
-        DTS:DataType="7">5/7/2026 1:00:54 PM</DTS:VariableValue>
+        DTS:DataType="7">7/25/2026 9:05:01 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -800,12 +800,6 @@ SELECT *
                           cachedName="DocumentDate"
                           externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].ExternalColumns[DocumentDate]"
                           lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[DocumentDate]" />
-                        <inputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].Columns[FinanceApprove]"
-                          cachedDataType="bool"
-                          cachedName="FinanceApprove"
-                          externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].ExternalColumns[FinanceApprove]"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[FinanceApprove]" />
                         <inputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument.Inputs[OLE DB Destination Input].Columns[StatusID]"
                           cachedDataType="i4"
@@ -1490,15 +1484,6 @@ SELECT *
                           name="DocumentDate"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[FinanceApprove]"
-                          dataType="bool"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[FinanceApprove]"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[FinanceApprove]"
-                          name="FinanceApprove"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].Columns[StatusID]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -1887,10 +1872,6 @@ SELECT *
                           dataType="i4"
                           name="DocumentDate" />
                         <externalMetadataColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[FinanceApprove]"
-                          dataType="bool"
-                          name="FinanceApprove" />
-                        <externalMetadataColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Output].ExternalColumns[StatusID]"
                           dataType="i4"
                           name="StatusID" />
@@ -2114,11 +2095,6 @@ SELECT *
                           dataType="i4"
                           lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[DocumentDate]"
                           name="DocumentDate" />
-                        <outputColumn
-                          refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[FinanceApprove]"
-                          dataType="bool"
-                          lineageId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[FinanceApprove]"
-                          name="FinanceApprove" />
                         <outputColumn
                           refId="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument.Outputs[OLE DB Source Error Output].Columns[StatusID]"
                           dataType="i4"
@@ -2471,7 +2447,11 @@ SELECT *
         <NodeLayout
           Size="184,42"
           Id="Package\Seq_FillStockDocumentInfo\FillDimStockDocument"
-          TopLeft="314,302" />
+          TopLeft="332,332" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Seq_FillStockDocumentInfo\FillDimThirdParty"
+          TopLeft="72,39" />
         <NodeLayout
           Size="206,42"
           Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument"
@@ -2481,31 +2461,41 @@ SELECT *
           Id="Package\Seq_FillStockDocumentInfo\UpdateRefStatus"
           TopLeft="323,198.222222222223" />
         <EdgeLayout
-          Id="Package\Seq_FillStockDocumentInfo.PrecedenceConstraints[Constraint 4]"
-          TopLeft="266.888888888889,357.333333333333">
+          Id="Package\Seq_FillStockDocumentInfo.PrecedenceConstraints[Constraint]"
+          TopLeft="150.472222222222,81">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.1111111111114,-34.3333333333334"
+              EndConnector="0,110.111111111111"
               Start="0,0"
-              End="39.6111111111114,-34.3333333333334">
+              End="0,102.611111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="19.5555555555557,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.5555555555557,0"
-                    Point2="23.5555555555557,0"
-                    Point3="23.5555555555557,-4" />
+                    End="0,102.611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seq_FillStockDocumentInfo.PrecedenceConstraints[Constraint 4]"
+          TopLeft="266.888888888889,355.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.111111111111,0"
+              Start="0,0"
+              End="57.611111111111,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="23.5555555555557,-30.3333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.5555555555557,-30.3333333333334"
-                    Point2="23.5555555555557,-34.3333333333334"
-                    Point3="27.5555555555557,-34.3333333333334" />
-                  <mssgle:LineSegment
-                    End="39.6111111111114,-34.3333333333334" />
+                    End="57.611111111111,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2550,18 +2540,30 @@ SELECT *
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Seq_FillStockDocumentInfo.PrecedenceConstraints[Constraint 7]"
-          TopLeft="405.25,302">
+          TopLeft="424,332">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-61.777777777777"
+              EndConnector="-19.5,-91.777777777777"
               Start="0,0"
-              End="0,-54.277777777777">
+              End="-19.5,-84.277777777777">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-54.277777777777" />
+                    End="0,-41.8888888888885" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-41.8888888888885"
+                    Point2="0,-45.8888888888885"
+                    Point3="-4,-45.8888888888885" />
+                  <mssgle:LineSegment
+                    End="-15.5,-45.8888888888885" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,-45.8888888888885"
+                    Point2="-19.5,-45.8888888888885"
+                    Point3="-19.5,-49.8888888888885" />
+                  <mssgle:LineSegment
+                    End="-19.5,-84.277777777777" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2592,32 +2594,6 @@ SELECT *
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Seq_FillStockDocumentInfo\FillDimThirdParty"
-          TopLeft="72,39" />
-        <EdgeLayout
-          Id="Package\Seq_FillStockDocumentInfo.PrecedenceConstraints[Constraint]"
-          TopLeft="150.472222222222,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,110.111111111111"
-              Start="0,0"
-              End="0,102.611111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,102.611111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -2629,71 +2605,10 @@ SELECT *
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="217,42"
-          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument"
-          TopLeft="519,86" />
-        <NodeLayout
-          Size="223,46"
-          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument"
-          TopLeft="521,246" />
-        <EdgeLayout
-          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument.Paths[OLE DB Source Output]"
-          TopLeft="630,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,118"
-              Start="0,0"
-              End="0,110.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,110.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Seq_FillStockDocumentInfo\FillDimThirdParty">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="213,42"
           Id="Package\Seq_FillStockDocumentInfo\FillDimThirdParty\Src_GetData_Src_ThirdParty"
@@ -2721,20 +2636,14 @@ SELECT *
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Seq_FillStockDocumentInfo\FillDimThirdParty\Src_GetData_Src_ThirdParty">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Seq_FillStockDocumentInfo\FillDimThirdParty\Dsn_SetData_ThirdParty">
     <Properties>
@@ -2745,6 +2654,73 @@ SELECT *
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillStockDocumentInfo\FillDimThirdParty\Src_GetData_Src_ThirdParty">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument"
+          TopLeft="519,86" />
+        <NodeLayout
+          Size="223,46"
+          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument"
+          TopLeft="521,246" />
+        <EdgeLayout
+          Id="Package\Seq_FillStockDocumentInfo\FillFactStockDocument.Paths[OLE DB Source Output]"
+          TopLeft="630,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118"
+              Start="0,0"
+              End="0,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Dsn_SetData_StockDocument">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seq_FillStockDocumentInfo\FillFactStockDocument\Src_GetData_StockDocument">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
